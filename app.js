@@ -4,7 +4,8 @@ var builder = require('botbuilder');
 // Create bot and add dialogs
 var bot = new builder.BotConnectorBot({ appId: 'YourAppId', appSecret: 'YourAppSecret' });
 bot.add('/', function (session) {
-    session.send('Hello Bot World');
+    console.log('Welcome message sent');
+    session.send('Hello KIK Bot World');
 });
 
 // Setup Restify Server
