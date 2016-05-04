@@ -17,17 +17,24 @@ bot.add('/', dialog);
 
 // });
 
+//handle the case where there's no recognized intent
+
 dialog.on('None', function (session, args, next) { 
     session.send( "What would you like to shop for? " ); 
     });
 
+//handle the Search intent
+
 dialog.on('Search', function (session, args, next) { 
 //    console.log(args.entities); 
+
+// use bot builder EntityRecognizer to parse out the LUIS entities
 var productName = builder.EntityRecognizer.findEntity(args.entities, 'ProductName'); 
 var color = builder.EntityRecognizer.findEntity(args.entities, 'Color'); 
 var brand = builder.EntityRecognizer.findEntity(args.entities, 'Brand'); 
 var priceScope = builder.EntityRecognizer.findEntity(args.entities, 'PriceScope'); 
-   
+
+// assemble the query using identified entities   
 var keywords = "";
  if (color) {(keywords = keywords + color.entity + " ")};
  if (productName) {(keywords = keywords + productName.entity + " ")};
@@ -53,8 +60,13 @@ var client = amazon.createClient({
 		  console.log(err);
 		});
  
+  
+ //results[0].SmallImage[0].URL[0]
+ 
+ 
     var attribution = "RobotsMODO By AlejandroLinaresGarcia (Own work) [CC BY-SA 3.0 (http://creativecommons.org/licenses/by-sa/3.0)], via Wikimedia Commons";
-    var imageLink = 'https://upload.wikimedia.org/wikipedia/commons/d/df/RobotsMODO.jpg';
+    var imageLink = results[0].SmallImage[0].URL[0];
+    console.log[imageLink];
     var reply = new builder.Message()
                                .setText(session, attribution)
                                .addAttachment({ fallbackText: attribution, contentType: 'image/jpeg', contentUrl: imageLink 
