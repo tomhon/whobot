@@ -61,7 +61,8 @@ var server = restify.createServer();
 server.get('/', function (req, res) {
     res.send('Running');
 });
-server.post('/api/messages', bot.verifyBotFramework(), bot.listen());
+// server.post('/api/messages', bot.verifyBotFramework(), bot.listen());
+server.post('/api/messages', bot.listen());
 server.listen(process.env.port || 80, function () {
     console.log('%s listening to %s', server.name, server.url); 
 });
