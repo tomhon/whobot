@@ -17,6 +17,10 @@ bot.add('/', dialog);
 
 // });
 
+dialog.on('None', function (session, args, next) { 
+    session.send( "What would you like to shop for? " ); 
+    });
+
 dialog.on('Search', function (session, args, next) { 
 //    console.log(args.entities); 
 var productName = builder.EntityRecognizer.findEntity(args.entities, 'ProductName'); 
