@@ -29,9 +29,9 @@ var brand = builder.EntityRecognizer.findEntity(args.entities, 'Brand');
 var priceScope = builder.EntityRecognizer.findEntity(args.entities, 'PriceScope'); 
    
 var keywords = "";
+ if (color) {(keywords = keywords + color.entity + " ")};
  if (productName) {(keywords = keywords + productName.entity + " ")};
  if (brand) {(keywords = keywords + brand.entity + " ")};
- if (color) {(keywords = keywords + color.entity + " ")};
  if (priceScope) {(keywords = keywords + priceScope.entity + " ")};
 
     console.log(keywords);
@@ -53,7 +53,17 @@ var client = amazon.createClient({
 		  console.log(err);
 		});
  
-      session.send( "You asked for " + keywords  ); 
+    var attribution = "RobotsMODO By AlejandroLinaresGarcia (Own work) [CC BY-SA 3.0 (http://creativecommons.org/licenses/by-sa/3.0)], via Wikimedia Commons";
+    var imageLink = 'https://upload.wikimedia.org/wikipedia/commons/d/df/RobotsMODO.jpg';
+    var reply = new builder.Message()
+                               .setText(session, attribution)
+                               .addAttachment({ fallbackText: attribution, contentType: 'image/jpeg', contentUrl: imageLink 
+                               });
+
+ 
+      session.send( "You asked for " + keywords ); 
+      session.endDialog(reply);
+      
     });
 
 // Setup Restify Server
