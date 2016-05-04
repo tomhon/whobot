@@ -65,11 +65,12 @@ var results;
 		});
  
   
- //results[0].SmallImage[0].URL[0]
+
  
  
- //   var attribution = "RobotsMODO By AlejandroLinaresGarcia (Own work) [CC BY-SA 3.0 (http://creativecommons.org/licenses/by-sa/3.0)], via Wikimedia Commons";
-    var attribution = results[0].ItemAttributes[0].Title[0];
+   var attribution = "RobotsMODO By AlejandroLinaresGarcia (Own work) [CC BY-SA 3.0 (http://creativecommons.org/licenses/by-sa/3.0)], via Wikimedia Commons";
+   var imageLink = 'https://upload.wikimedia.org/wikipedia/commons/d/df/RobotsMODO.jpg';
+//   var attribution = results[0].ItemAttributes[0].Title[0];
 //   var imageLink = results[0].SmallImage[0].URL[0];
     console.log[imageLink];
     var reply = new builder.Message()
