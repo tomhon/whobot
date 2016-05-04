@@ -50,12 +50,16 @@ var client = amazon.createClient({
   awsTag: "shopbot00-20"
 });
 
+var results;
+
    var searches = client.itemSearch({
 		  keywords: keywords,
 		  searchIndex: 'All',
 		  responseGroup: 'ItemAttributes,Offers,Images'
-		}).then(function(results){
-		  console.log(results);
+		}).then(function(searchResults){
+		  results = searchResults;
+      console.log(results);
+      
 		}).catch(function(err){
 		  console.log(err);
 		});
@@ -64,8 +68,9 @@ var client = amazon.createClient({
  //results[0].SmallImage[0].URL[0]
  
  
-    var attribution = "RobotsMODO By AlejandroLinaresGarcia (Own work) [CC BY-SA 3.0 (http://creativecommons.org/licenses/by-sa/3.0)], via Wikimedia Commons";
-    var imageLink = results[0].SmallImage[0].URL[0];
+ //   var attribution = "RobotsMODO By AlejandroLinaresGarcia (Own work) [CC BY-SA 3.0 (http://creativecommons.org/licenses/by-sa/3.0)], via Wikimedia Commons";
+    var attribution = results[0].ItemAttributes[0].Title[0];
+//   var imageLink = results[0].SmallImage[0].URL[0];
     console.log[imageLink];
     var reply = new builder.Message()
                                .setText(session, attribution)
