@@ -5,15 +5,9 @@ var amazon = require('amazon-product-api');
 // Create bot and add dialogs
 var bot = new builder.BotConnectorBot({ appId: 'My3rdBot', appSecret: '77fb019861b849fe9f5c584920bff461' });
 
-
+// Connect to LUIS application
 var dialog = new builder.LuisDialog('https://api.projectoxford.ai/luis/v1/application?id=8974d6fa-1500-46bc-9ac0-f5a1a1c30217&subscription-key=929a376180624437bc881e4501940e3e');
 bot.add('/', dialog);
-
-// dialog.on('Search', function (session, args) {
-// console.log(args.entities);
-// console.log(args.intents);
-
-//     session.send('Thanks! Bot version 1.2');
 
 // });
 
@@ -22,6 +16,18 @@ bot.add('/', dialog);
 dialog.on('None', function (session, args, next) { 
     session.send( "What would you like to shop for? " ); 
     });
+    
+//handle the case where intent is happy
+
+dialog.on('Happy', function (session, args, next) { 
+    session.send( "Hope you enjoyed this as much as i did:-) " ); 
+    });
+    
+//handle the case where intent is sad
+
+dialog.on('Sad', function (session, args, next) { 
+    session.send( "Sorry about that. NExt time will be more fun:-) " ); 
+    });    
 
 //handle the Search intent
 
@@ -59,11 +65,11 @@ var results;
 		  responseGroup: 'ItemAttributes,Offers,Images'
 		}).then(function(searchResults){
 		  results = searchResults;
- //     console.log(results);
- //parse results and build response message 
+//     console.log(results);
+//parse results and build response message 
       var attribution = results[0].ItemAttributes[0].Title[0];
       var imageLink = results[0].LargeImage[0].URL[0];
-    // console.log[imageLink];
+// console.log[imageLink];
     var reply = new builder.Message()
                                .setText(session, attribution)
                                .addAttachment({ fallbackText: attribution, contentType: 'image/jpeg', contentUrl: imageLink 
