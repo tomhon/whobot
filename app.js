@@ -52,9 +52,9 @@ var keywords = "";
 // connect to Amazon shopping API
 
 var client = amazon.createClient({
-  awsId: "AKIAIFHM35CBDPNEK6BQ",
-  awsSecret: "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",
-  awsTag: "shopbot00-20"
+  awsId: process.env.AWSID,
+  awsSecret: process.env.AWSSECRET,
+  awsTag: process.env.AWSTAG
 });
 
 var results;

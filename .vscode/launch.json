@@ -15,7 +15,8 @@
 				"--nolazy"
 			],
 			"env": {
-				"NODE_ENV": "development"
+				"NODE_ENV": "development",
+				"AWSID": ""
 			},
 			"externalConsole": false,
 			"sourceMaps": false,
