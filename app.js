@@ -60,7 +60,7 @@ var results;
 		  results = searchResults;
       console.log(results);
       var attribution = results[0].ItemAttributes[0].Title[0];
-      var imageLink = results[0].SmallImage[0].URL[0];
+      var imageLink = results[0].LargeImage[0].URL[0];
     console.log[imageLink];
     var reply = new builder.Message()
                                .setText(session, attribution)
