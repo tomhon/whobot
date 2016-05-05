@@ -28,6 +28,12 @@ dialog.on('Happy', function (session, args, next) {
 dialog.on('Sad', function (session, args, next) { 
     session.send( "Life? Don't talk to me about life. Did you know I've got this terrible pain in all the diodes down my left side? " ); 
     });    
+    
+//handle the case where intent is abuse
+
+dialog.on('Abuse', function (session, args, next) { 
+    session.send( "No, just because we're both using Microsft's AI doesn't mean I'm into racist abuse:-) " ); 
+    });   
 
 //handle the Search intent
 
