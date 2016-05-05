@@ -26,7 +26,7 @@ dialog.on('Happy', function (session, args, next) {
 //handle the case where intent is sad
 
 dialog.on('Sad', function (session, args, next) { 
-    session.send( "Sorry about that:-( Next time will definitely be more fun:-) " ); 
+    session.send( "Life? Don't talk to me about life. Did you know I've got this terrible pain in all the diodes down my left side? " ); 
     });    
 
 //handle the Search intent
