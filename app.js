@@ -14,7 +14,7 @@ bot.add('/', dialog);
 //handle the case where there's no recognized intent
 
 dialog.on('None', function (session, args, next) { 
-    session.send( "What would you like to shop for? " ); 
+    session.send( "Welcome to Shoppingly on Bot Framework. What would you like to shop for? " ); 
     });
     
 //handle the case where intent is happy
