@@ -49,7 +49,7 @@ var keywords = "";
 
     console.log(keywords);
 
-// connect to Amazon shopping API
+// connect to Amazon shopping API using Azure Application Settings
 
 var client = amazon.createClient({
   awsId: process.env.AWSID,
