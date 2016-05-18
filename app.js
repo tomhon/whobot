@@ -37,7 +37,7 @@ dialog.on('Abuse', function (session, args, next) {
     session.send( "No, just because we're both using Microsft's AI doesn't mean I'm into racist abuse:-) " ); 
     });   
 
-//handle the Search intent
+//handle the Find Technical Evangelist Find_TE intent
 
 dialog.on('Find_TE', function (session, args, next) { 
 //    console.log(args.entities); 
@@ -87,6 +87,59 @@ var results;
 		});
       
     });
+
+//handle the Find Business Evangelist Find_BE intent
+
+dialog.on('Find_BE', function (session, args, next) { 
+//    console.log(args.entities); 
+
+// use bot builder EntityRecognizer to parse out the LUIS entities
+var account = builder.EntityRecognizer.findEntity(args.entities, 'Account'); 
+
+// assemble the query using identified entities   
+var keywords = "";
+ if (account) {(keywords = keywords +account.entity + " ")};
+
+
+    console.log(keywords);
+      session.send( "You asked to find the BE for " + keywords ); 
+// connect to Amazon shopping API using Azure Application Settings
+
+var client = amazon.createClient({
+  awsId: process.env.AWSID,
+  awsSecret: process.env.AWSSECRET,
+  awsTag: process.env.AWSTAG
+});
+
+var results;
+
+   var searches = client.itemSearch({
+		  keywords: keywords,
+		  searchIndex: 'All',
+		  responseGroup: 'ItemAttributes,Offers,Images'
+		}).then(function(searchResults){
+		  results = searchResults;
+//     console.log(results);
+
+//parse results and build response message 
+      var attribution = results[0].ItemAttributes[0].Title[0];
+      var imageLink = results[0].LargeImage[0].URL[0];
+// console.log[imageLink];
+    var reply = new builder.Message()
+                               .setText(session, attribution)
+                               .addAttachment({ fallbackText: attribution, contentType: 'image/jpeg', contentUrl: imageLink 
+                               });
+// return results to client
+      session.send( "You asked for " + keywords ); 
+      session.endDialog(reply);
+      
+		}).catch(function(err){
+		  console.log(err);
+		});
+      
+    });
+
+
 
 // Setup Restify Server
 var server = restify.createServer();
