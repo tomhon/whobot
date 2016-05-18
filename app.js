@@ -75,7 +75,7 @@ var config = {
 var connection = new Connection(config);
 var connectionSucceed = False;
 
- session.send( "Line 93 connectionSucceed is " + connectionSucceed); 
+ session.send( "Line 93 connectionSucceed is "); 
 
     connection.on('connect', function(err) {
     // If no error, then good to proceed.
