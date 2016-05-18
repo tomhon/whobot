@@ -78,7 +78,7 @@ var connection = new Connection(config);
 
     // console.log(keywords);
       session.send( "The TE for " + keywords + " is "); 
-      
+      session.endDialog();
       
      
       
