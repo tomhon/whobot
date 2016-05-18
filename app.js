@@ -73,6 +73,7 @@ var config = {
     //   session.send( "SQL Server is " + config.server); 
 
 var connection = new Connection(config);
+  session.send( "Line 76 SQL Server is " + config.server); 
     
     connection.on('connect', function(err) {
     // If no error, then good to proceed.
