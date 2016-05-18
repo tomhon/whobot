@@ -51,7 +51,7 @@ var keywords = "";
 
 
     console.log(keywords);
-      session.send( "You asked to find the TE for " + keywords ); 
+      session.send( "The TE for " + keywords + " is "); 
 // connect to Amazon shopping API using Azure Application Settings
 
 var client = amazon.createClient({
@@ -102,7 +102,7 @@ var keywords = "";
 
 
     console.log(keywords);
-      session.send( "You asked to find the BE for " + keywords ); 
+      session.send( "The BE for " + keywords + " is " ;
 // connect to Amazon shopping API using Azure Application Settings
 
 var client = amazon.createClient({
