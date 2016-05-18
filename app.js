@@ -74,10 +74,10 @@ var config = {
 
 var connection = new Connection(config);
 
- session.send( "Line 77 - SQL Server is " + config.server); 
+//  session.send( "Line 77 - SQL Server is " + config.server); 
 var connectionSucceed = False;
 
- session.send( "Line 93 connectionSucceed is "); 
+ session.send( "Line 80 connectionSucceed is "); 
 
     connection.on('connect', function(err) {
     // If no error, then good to proceed.
