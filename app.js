@@ -1,10 +1,14 @@
+"use strict";
+
 // Cloned & branched from my3rdbot
 
 var restify = require('restify');
 var builder = require('botbuilder');
 // var amazon = require('amazon-product-api');
 
-
+//add appInsights
+// import appInsights = require("applicationinsights");
+// appInsights.setup("<instrumentation_key>").start();
 
 
 // Create bot and add dialogs
