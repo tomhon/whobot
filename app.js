@@ -77,7 +77,7 @@ var connection = new Connection(config);
           bot.session.send("Connected to " + this.config.server);
         };
         
-        executeAccountQuery('Hulu');
+
         
     });
     
@@ -106,7 +106,7 @@ var connection = new Connection(config);
               }
             });
             console.log(result);
-            session.send(result);
+            bot.session.send(result);
             result ="";
         });
 
@@ -120,6 +120,7 @@ var connection = new Connection(config);
 
     // console.log(keywords);
       session.send( "The TE for " + keywords + "is " ); 
+      executeAccountQuery('Hulu');
       session.endDialog();
       
      
