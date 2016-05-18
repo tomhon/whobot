@@ -70,6 +70,8 @@ var config = {
         options: {encrypt: true, database: process.env.SQLdatabase}
     };
 
+      session.send( "Line 73 - The TE for " + keywords + "is " ); 
+
 var connection = new Connection(config);
     
     connection.on('connect', function(err) {
@@ -123,7 +125,7 @@ var connection = new Connection(config);
 //post results to chat
 
     // console.log(keywords);
-      session.send( "The TE for " + keywords + "is " ); 
+    //   session.send( "The TE for " + keywords + "is " ); 
       executeAccountQuery('Hulu');
       session.endDialog();
       
