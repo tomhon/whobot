@@ -70,7 +70,7 @@ var config = {
         options: {encrypt: true, database: process.env.SQLdatabase}
     };
 
-      session.send( "Line 73 - The TE for " + keywords + "is " ); 
+      session.send( "Line 73 - The TE for " + keywords + "is " + config); 
 
 var connection = new Connection(config);
     
