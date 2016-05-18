@@ -48,44 +48,44 @@ var account = builder.EntityRecognizer.findEntity(args.entities, 'Account');
 
 // assemble the query using identified entities   
 var keywords = "";
- if (account) {(keywords = keywords +account.entity + " ")};
+ if (account) {(keywords = keywords + account.entity + " ")};
 
 
-    console.log(keywords);
+    // console.log(keywords);
       session.send( "The TE for " + keywords + " is "); 
 // connect to Amazon shopping API using Azure Application Settings
 
-var client = amazon.createClient({
-  awsId: process.env.AWSID,
-  awsSecret: process.env.AWSSECRET,
-  awsTag: process.env.AWSTAG
-});
+// var client = amazon.createClient({
+//   awsId: process.env.AWSID,
+//   awsSecret: process.env.AWSSECRET,
+//   awsTag: process.env.AWSTAG
+// });
 
-var results;
+// var results;
 
-   var searches = client.itemSearch({
-		  keywords: keywords,
-		  searchIndex: 'All',
-		  responseGroup: 'ItemAttributes,Offers,Images'
-		}).then(function(searchResults){
-		  results = searchResults;
-//     console.log(results);
+//    var searches = client.itemSearch({
+// 		  keywords: keywords,
+// 		  searchIndex: 'All',
+// 		  responseGroup: 'ItemAttributes,Offers,Images'
+// 		}).then(function(searchResults){
+// 		  results = searchResults;
+// //     console.log(results);
 
-//parse results and build response message 
-      var attribution = results[0].ItemAttributes[0].Title[0];
-      var imageLink = results[0].LargeImage[0].URL[0];
-// console.log[imageLink];
-    var reply = new builder.Message()
-                               .setText(session, attribution)
-                               .addAttachment({ fallbackText: attribution, contentType: 'image/jpeg', contentUrl: imageLink 
-                               });
-// return results to client
-      session.send( "You asked for " + keywords ); 
-      session.endDialog(reply);
+// //parse results and build response message 
+//       var attribution = results[0].ItemAttributes[0].Title[0];
+//       var imageLink = results[0].LargeImage[0].URL[0];
+// // console.log[imageLink];
+//     var reply = new builder.Message()
+//                                .setText(session, attribution)
+//                                .addAttachment({ fallbackText: attribution, contentType: 'image/jpeg', contentUrl: imageLink 
+//                                });
+// // return results to client
+//       session.send( "You asked for " + keywords ); 
+//       session.endDialog(reply);
       
-		}).catch(function(err){
-		  console.log(err);
-		});
+// 		}).catch(function(err){
+// 		  console.log(err);
+// 		});
       
     });
 //---------------------------------------------------------------------------------------------------
@@ -104,7 +104,8 @@ var keywords = "";
 
     console.log(keywords);
       session.send( "The BE for " + keywords + " is "); 
-// connect to Amazon shopping API using Azure Application Settings
+
+// Find BE for account
 
 
 
