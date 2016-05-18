@@ -74,7 +74,7 @@ var connection = new Connection(config);
            console.log(err);
         } else {
           console.log("Connected to " + this.config.server + " " + this.config.options.database);      
-          session.send("Connected to " + this.config.server);
+          bot.session.send("Connected to " + this.config.server);
         };
         
         
@@ -115,8 +115,10 @@ var connection = new Connection(config);
         connection.execSql(request);
     }
 
+//post results to chat
+
     // console.log(keywords);
-      session.send( "The TE for " + keywords + "is "); 
+      session.send( "The TE for " + keywords + "is " ); 
       session.endDialog();
       
      
