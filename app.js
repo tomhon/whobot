@@ -75,9 +75,9 @@ var config = {
 var connection = new Connection(config);
 
 //  session.send( "Line 77 - SQL Server is " + config.server); 
-var connectionSucceed = False;
+var connectionSucceed = false;
 
- session.send( "Line 80 connectionSucceed is "); 
+ session.send( "Line 80 connectionSucceed is " + connectionSucceed); 
 
     connection.on('connect', function(err) {
     // If no error, then good to proceed.
