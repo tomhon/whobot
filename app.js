@@ -70,9 +70,11 @@ var config = {
         options: {encrypt: true, database: process.env.SQLdatabase}
     };
 
- session.send( "Line 73 - SQL Server is " + config.server); 
+//  session.send( "Line 73 - SQL Server is " + config.server); 
 
 var connection = new Connection(config);
+
+ session.send( "Line 77 - SQL Server is " + config.server); 
 var connectionSucceed = False;
 
  session.send( "Line 93 connectionSucceed is "); 
