@@ -73,7 +73,7 @@ var config = {
     //   session.send( "SQL Server is " + config.server); 
 
 var connection = new Connection(config);
-  session.send( "Line 76 SQL Server is " + config.server); 
+var connectionSucceed = False;
     
     connection.on('connect', function(err) {
     // If no error, then good to proceed.
@@ -83,11 +83,14 @@ var connection = new Connection(config);
         } else {
           console.log("Connected to " + this.config.server + " " + this.config.options.database);      
           session.send("Connected to " + this.config.server);
+          connectionSucceed = True;
         };
         
 
         
     });
+  
+    session.send( "Line 93 connectionSucceed is " + connectionSucceed); 
     
 //function to execute SQL query    
     
