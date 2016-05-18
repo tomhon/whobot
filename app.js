@@ -73,11 +73,14 @@ var connection = new Connection(config);
         if (err) {
            console.log(err);
         } else {
-          console.log("Connected to " + this.config.server + " " + this.config.options.database);        
+          console.log("Connected to " + this.config.server + " " + this.config.options.database);      
+          session.send("Connected to " + this.config.server);
         };
         
         
     });
+    
+//function to execute SQL query    
     
         function executeAccountQuery(account) {
       // request = new Request("SELECT c.CustomerID, c.CompanyName,COUNT(soh.SalesOrderID) AS OrderCount FROM SalesLT.Customer AS c LEFT OUTER JOIN SalesLT.SalesOrderHeader AS soh ON c.CustomerID = soh.CustomerID GROUP BY c.CustomerID, c.CompanyName ORDER BY OrderCount DESC;", function(err) {
