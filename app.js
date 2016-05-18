@@ -18,19 +18,19 @@ bot.add('/', dialog);
 dialog.on('None', function (session, args, next) { 
     session.send( "Master! Welcome to K9 on Microsoft Bot Framework. I can tell you which TE or BE manages any GISV partner." ); 
     });
-    
+//---------------------------------------------------------------------------------------------------    
 //handle the case where intent is happy
 
 dialog.on('Happy', function (session, args, next) { 
     session.send( "Hope you enjoyed this as much as i did:-) " ); 
     });
-    
+//---------------------------------------------------------------------------------------------------    
 //handle the case where intent is sad
 
 dialog.on('Sad', function (session, args, next) { 
     session.send( "Life? Don't talk to me about life. Did you know I've got this terrible pain in all the diodes down my left side? " ); 
     });    
-    
+//---------------------------------------------------------------------------------------------------    
 //handle the case where intent is abuse
 
 dialog.on('Abuse', function (session, args, next) { 
@@ -106,41 +106,16 @@ var keywords = "";
       session.send( "The BE for " + keywords + " is "); 
 // connect to Amazon shopping API using Azure Application Settings
 
-var client = amazon.createClient({
-  awsId: process.env.AWSID,
-  awsSecret: process.env.AWSSECRET,
-  awsTag: process.env.AWSTAG
-});
 
-var results;
 
-   var searches = client.itemSearch({
-		  keywords: keywords,
-		  searchIndex: 'All',
-		  responseGroup: 'ItemAttributes,Offers,Images'
-		}).then(function(searchResults){
-		  results = searchResults;
-//     console.log(results);
 
-//parse results and build response message 
-      var attribution = results[0].ItemAttributes[0].Title[0];
-      var imageLink = results[0].LargeImage[0].URL[0];
-// console.log[imageLink];
-    var reply = new builder.Message()
-                               .setText(session, attribution)
-                               .addAttachment({ fallbackText: attribution, contentType: 'image/jpeg', contentUrl: imageLink 
-                               });
-// return results to client
-      session.send( "You asked for " + keywords ); 
-      session.endDialog(reply);
-      
-		}).catch(function(err){
-		  console.log(err);
-		});
+
+
+
       
     });
 
-
+//---------------------------------------------------------------------------------------------------
 // Setup Restify Server
 var server = restify.createServer();
 server.get('/', function (req, res) {
