@@ -102,6 +102,7 @@ var connection = new Connection(config);
               }
             });
             console.log(result);
+            session.send(result);
             result ="";
         });
 
