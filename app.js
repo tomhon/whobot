@@ -128,7 +128,7 @@ var connection = new Connection(config);
     // console.log(keywords);
     //   session.send( "The TE for " + keywords + "is " ); 
       executeAccountQuery('Hulu');
-      session.endDialog();
+      session.endDialog("Session Ended");
       
      
       
