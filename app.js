@@ -63,6 +63,16 @@ var config = {
         options: {encrypt: true, database: process.env.SQLdatabase}
     };
 
+var connection = new Connection(config);
+    
+    connection.on('connect', function(err) {
+    // If no error, then good to proceed.
+        if (err) {
+           console.log(err);
+        } else {
+          console.log("Connected to " + this.config.server + " " + this.config.options.database);        
+        };
+
     // console.log(keywords);
       session.send( "The TE for " + keywords + " is "); 
       
