@@ -56,7 +56,7 @@ var keywords = "";
  if (priceScope) {(keywords = keywords + priceScope.entity + " ")};
 
     console.log(keywords);
-
+      session.send( "You asked for " + keywords ); 
 // connect to Amazon shopping API using Azure Application Settings
 
 var client = amazon.createClient({
