@@ -5,7 +5,7 @@ var builder = require('botbuilder');
 var amazon = require('amazon-product-api');
 
 // Create bot and add dialogs
-var bot = new builder.BotConnectorBot({ appId: 'My3rdBot', appSecret: '77fb019861b849fe9f5c584920bff461' });
+var bot = new builder.BotConnectorBot({ appId: process.env.AppID, appSecret: process.env.AppSecret });
 
 // Connect to LUIS application
 var dialog = new builder.LuisDialog('https://api.projectoxford.ai/luis/v1/application?id=8974d6fa-1500-46bc-9ac0-f5a1a1c30217&subscription-key=929a376180624437bc881e4501940e3e');
