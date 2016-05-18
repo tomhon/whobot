@@ -1,3 +1,5 @@
+// Cloned & branched from my3rdbot
+
 var restify = require('restify');
 var builder = require('botbuilder');
 var amazon = require('amazon-product-api');
