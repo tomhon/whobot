@@ -72,6 +72,9 @@ var connection = new Connection(config);
         } else {
           console.log("Connected to " + this.config.server + " " + this.config.options.database);        
         };
+        
+        
+    });
 
     // console.log(keywords);
       session.send( "The TE for " + keywords + " is "); 
