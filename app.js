@@ -50,9 +50,19 @@ var account = builder.EntityRecognizer.findEntity(args.entities, 'Account');
 var keywords = "";
  if (account) {(keywords = keywords + account.entity + " ")};
 
+// build SQL request
+
+var Request = require('tedious').Request;
+var TYPES = require('tedious').TYPES; 
+
 
     // console.log(keywords);
       session.send( "The TE for " + keywords + " is "); 
+      
+      
+     
+      
+      
 // connect to Amazon shopping API using Azure Application Settings
 
 // var client = amazon.createClient({
