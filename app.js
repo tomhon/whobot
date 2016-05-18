@@ -77,6 +77,7 @@ var connection = new Connection(config);
           bot.session.send("Connected to " + this.config.server);
         };
         
+        executeAccountQuery('Hulu');
         
     });
     
