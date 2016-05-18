@@ -2,7 +2,7 @@
 
 var restify = require('restify');
 var builder = require('botbuilder');
-var amazon = require('amazon-product-api');
+// var amazon = require('amazon-product-api');
 
 // Create bot and add dialogs
 var bot = new builder.BotConnectorBot({ appId: process.env.AppID, appSecret: process.env.AppSecret });
@@ -54,6 +54,7 @@ var keywords = "";
 
 var Request = require('tedious').Request;
 var TYPES = require('tedious').TYPES; 
+var Connection = require('tedious').Connection;
 
 
     // console.log(keywords);
