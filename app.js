@@ -58,7 +58,7 @@ var Connection = require('tedious').Connection;
 var config = {
         userName: process.env.SQLuserName,
         password: process.env.SQLpassword,
-        server: process.enc.SQLserver,
+        server: process.env.SQLserver,
         // If you are on Microsoft Azure, you need this:
         options: {encrypt: true, database: process.env.SQLdatabase}
     };
