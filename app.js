@@ -70,7 +70,7 @@ var config = {
         options: {encrypt: true, database: process.env.SQLdatabase}
     };
 
-    //   session.send( "SQL Server is " + config.server); 
+ session.send( "Line 73 - SQL Server is " + config.server); 
 
 var connection = new Connection(config);
 var connectionSucceed = False;
@@ -133,7 +133,7 @@ var connectionSucceed = False;
 
     // console.log(keywords);
     //   session.send( "The TE for " + keywords + "is " ); 
-      executeAccountQuery('Hulu');
+    //   executeAccountQuery('Hulu');
       session.endDialog("Session Ended");
       
      
