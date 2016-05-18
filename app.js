@@ -4,6 +4,9 @@ var restify = require('restify');
 var builder = require('botbuilder');
 // var amazon = require('amazon-product-api');
 
+
+
+
 // Create bot and add dialogs
 var bot = new builder.BotConnectorBot({ appId: process.env.AppID, appSecret: process.env.AppSecret });
 
@@ -75,9 +78,41 @@ var connection = new Connection(config);
         
         
     });
+    
+        function executeAccountQuery(account) {
+      // request = new Request("SELECT c.CustomerID, c.CompanyName,COUNT(soh.SalesOrderID) AS OrderCount FROM SalesLT.Customer AS c LEFT OUTER JOIN SalesLT.SalesOrderHeader AS soh ON c.CustomerID = soh.CustomerID GROUP BY c.CustomerID, c.CompanyName ORDER BY OrderCount DESC;", function(err) {
+        console.log(account);
+        var queryStatement = "SELECT Title, AssignedTE FROM dbo.PartnerIsvs WHERE Title LIKE '" + account +"%'";
+        console.log(queryStatement.trim());
+        request = new Request(queryStatement.trim(), function(err) {
+        if (err) {
+            console.log(err);
+          }
+        });
+
+        
+
+        var result = "";
+        request.on('row', function(columns) {
+            columns.forEach(function(column) {
+              if (column.value === null) {
+                console.log('NULL');
+              } else {
+                result+= column.value + " ";
+              }
+            });
+            console.log(result);
+            result ="";
+        });
+
+        request.on('done', function(rowCount, more) {
+        console.log(rowCount + ' rows returned');
+        });
+        connection.execSql(request);
+    }
 
     // console.log(keywords);
-      session.send( "The TE for " + keywords + " is "); 
+      session.send( "The TE for " + keywords + "is "); 
       session.endDialog();
       
      
