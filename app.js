@@ -16,7 +16,7 @@ bot.add('/', dialog);
 //handle the case where there's no recognized intent
 
 dialog.on('None', function (session, args, next) { 
-    session.send( "Welcome to K9 on Microsoft Bot Framework. I can tell you which TE or BE manages any GISV partner." ); 
+    session.send( "Master! Welcome to K9 on Microsoft Bot Framework. I can tell you which TE or BE manages any GISV partner." ); 
     });
     
 //handle the case where intent is happy
@@ -39,24 +39,19 @@ dialog.on('Abuse', function (session, args, next) {
 
 //handle the Search intent
 
-dialog.on('Search', function (session, args, next) { 
+dialog.on('Find_TE', function (session, args, next) { 
 //    console.log(args.entities); 
 
 // use bot builder EntityRecognizer to parse out the LUIS entities
-var productName = builder.EntityRecognizer.findEntity(args.entities, 'ProductName'); 
-var color = builder.EntityRecognizer.findEntity(args.entities, 'Color'); 
-var brand = builder.EntityRecognizer.findEntity(args.entities, 'Brand'); 
-var priceScope = builder.EntityRecognizer.findEntity(args.entities, 'PriceScope'); 
+var account = builder.EntityRecognizer.findEntity(args.entities, 'Account'); 
 
 // assemble the query using identified entities   
 var keywords = "";
- if (color) {(keywords = keywords + color.entity + " ")};
- if (productName) {(keywords = keywords + productName.entity + " ")};
- if (brand) {(keywords = keywords + brand.entity + " ")};
- if (priceScope) {(keywords = keywords + priceScope.entity + " ")};
+ if (account) {(keywords = keywords +account.entity + " ")};
+
 
     console.log(keywords);
-      session.send( "You asked for " + keywords ); 
+      session.send( "You asked to find the TE for " + keywords ); 
 // connect to Amazon shopping API using Azure Application Settings
 
 var client = amazon.createClient({
@@ -74,6 +69,7 @@ var results;
 		}).then(function(searchResults){
 		  results = searchResults;
 //     console.log(results);
+
 //parse results and build response message 
       var attribution = results[0].ItemAttributes[0].Title[0];
       var imageLink = results[0].LargeImage[0].URL[0];
