@@ -74,7 +74,9 @@ var config = {
 
 var connection = new Connection(config);
 var connectionSucceed = False;
-    
+
+ session.send( "Line 93 connectionSucceed is " + connectionSucceed); 
+
     connection.on('connect', function(err) {
     // If no error, then good to proceed.
         if (err) {
@@ -90,7 +92,7 @@ var connectionSucceed = False;
         
     });
   
-    session.send( "Line 93 connectionSucceed is " + connectionSucceed); 
+
     
 //function to execute SQL query    
     
