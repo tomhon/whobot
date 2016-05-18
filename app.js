@@ -70,17 +70,18 @@ var config = {
         options: {encrypt: true, database: process.env.SQLdatabase}
     };
 
-      session.send( "Line 73 - The TE for " + keywords + "is " + config.server); 
+      session.send( "SQL Server is " + config.server); 
 
 var connection = new Connection(config);
     
     connection.on('connect', function(err) {
     // If no error, then good to proceed.
         if (err) {
+           session.send("Line 80" + err);
            console.log(err);
         } else {
           console.log("Connected to " + this.config.server + " " + this.config.options.database);      
-          bot.session.send("Connected to " + this.config.server);
+          session.send("Connected to " + this.config.server);
         };
         
 
