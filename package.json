@@ -1,7 +1,7 @@
 {
-  "name": "my3rdbot",
+  "name": "whobot",
   "version": "1.0.0",
-  "description": "",
+  "description": "K9 will tell you who manages which accounts",
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -9,7 +9,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "amazon-product-api": "^0.3.10",
+    // "amazon-product-api": "^0.3.10",
     "botbuilder": "^0.9.2",
     "restify": "^4.0.4",
     "tedious": "^1.14.0"
