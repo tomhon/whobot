@@ -11,6 +11,35 @@ var builder = require('botbuilder');
 // appInsights.setup("<instrumentation_key>").start();
 
 
+//Connect to SQL Server
+var Request = require('tedious').Request;
+var TYPES = require('tedious').TYPES; 
+var Connection = require('tedious').Connection;
+var config = {
+        userName: process.env.SQLuserName,
+        password: process.env.SQLpassword,
+        server: process.env.SQLserver,
+        // If you are on Microsoft Azure, you need this:
+        options: {encrypt: true, database: process.env.SQLdatabase}
+    };
+
+var connection = new Connection(config);
+
+var connectionSucceed = false;
+
+    connection.on('connect', function(err) {
+    // If no error, then good to proceed.
+        if (err) {
+           console.log(err);
+        } else {
+          console.log("Connected to " + this.config.server + " " + this.config.options.database);      
+          connectionSucceed = true;
+        };
+        
+        
+    });
+  
+
 // Create bot and add dialogs
 var bot = new builder.BotConnectorBot({ appId: process.env.AppID, appSecret: process.env.AppSecret });
 
@@ -57,44 +86,8 @@ var account = builder.EntityRecognizer.findEntity(args.entities, 'Account');
 var keywords = "";
  if (account) {(keywords = keywords + account.entity + " ")};
 
-// build SQL request
 
-var Request = require('tedious').Request;
-var TYPES = require('tedious').TYPES; 
-var Connection = require('tedious').Connection;
-var config = {
-        userName: process.env.SQLuserName,
-        password: process.env.SQLpassword,
-        server: process.env.SQLserver,
-        // If you are on Microsoft Azure, you need this:
-        options: {encrypt: true, database: process.env.SQLdatabase}
-    };
-
-//  session.send( "Line 73 - SQL Server is " + config.server); 
-
-var connection = new Connection(config);
-
-//  session.send( "Line 77 - SQL Server is " + config.server); 
-var connectionSucceed = false;
-
-//  session.send( "Line 80 connectionSucceed is " + connectionSucceed); 
-
-    connection.on('connect', function(err) {
-    // If no error, then good to proceed.
-        if (err) {
-           session.send("Line 80" + err);
-           console.log(err);
-        } else {
-          console.log("Connected to " + this.config.server + " " + this.config.options.database);      
-          session.send("Connected to " + this.config.server);
-          connectionSucceed = true;
-        };
-        
-
-        
-    });
-  
- session.send( "Line 97 connectionSucceed is " + connectionSucceed); 
+ session.send( "Line 92 connectionSucceed is " + connectionSucceed); 
     
 //function to execute SQL query    
     
