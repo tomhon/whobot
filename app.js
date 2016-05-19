@@ -121,7 +121,7 @@ var keywords = "";
  if (account) {(keywords = keywords + account.entity + " ")};
 
 
- session.send( "Line 118 connectionSucceed is " + connectionSucceed); 
+//  session.send( "Line 118 connectionSucceed is " + connectionSucceed); 
     
 
 
