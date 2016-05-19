@@ -38,7 +38,41 @@ var connectionSucceed = false;
         
         
     });
-  
+ 
+ //function to execute SQL query    
+    
+        function executeAccountQuery(account, result) {
+      // request = new Request("SELECT c.CustomerID, c.CompanyName,COUNT(soh.SalesOrderID) AS OrderCount FROM SalesLT.Customer AS c LEFT OUTER JOIN SalesLT.SalesOrderHeader AS soh ON c.CustomerID = soh.CustomerID GROUP BY c.CustomerID, c.CompanyName ORDER BY OrderCount DESC;", function(err) {
+        console.log(account);
+        var queryStatement = "SELECT Title, AssignedTE FROM dbo.PartnerIsvs";
+        console.log(queryStatement.trim());
+        request = new Request(queryStatement.trim(), function(err) {
+        if (err) {
+            console.log(err);
+          }
+        });
+
+        
+
+        result = "";
+        request.on('row', function(columns) {
+            columns.forEach(function(column) {
+              if (column.value === null) {
+                console.log('NULL');
+              } else {
+                result+= column.value + " ";
+              }
+            });
+            console.log(result);
+            bot.session.send(result);
+            result ="";
+        }); 
+        
+                request.on('done', function(rowCount, more) {
+        console.log(rowCount + ' rows returned');
+        });
+        connection.execSql(request);
+    };
 
 // Create bot and add dialogs
 var bot = new builder.BotConnectorBot({ appId: process.env.AppID, appSecret: process.env.AppSecret });
@@ -87,47 +121,16 @@ var keywords = "";
  if (account) {(keywords = keywords + account.entity + " ")};
 
 
- session.send( "Line 92 connectionSucceed is " + connectionSucceed); 
+ session.send( "Line 118 connectionSucceed is " + connectionSucceed); 
     
-//function to execute SQL query    
-    
-        function executeAccountQuery(account) {
-      // request = new Request("SELECT c.CustomerID, c.CompanyName,COUNT(soh.SalesOrderID) AS OrderCount FROM SalesLT.Customer AS c LEFT OUTER JOIN SalesLT.SalesOrderHeader AS soh ON c.CustomerID = soh.CustomerID GROUP BY c.CustomerID, c.CompanyName ORDER BY OrderCount DESC;", function(err) {
-        console.log(account);
-        var queryStatement = "SELECT Title, AssignedTE FROM dbo.PartnerIsvs WHERE Title LIKE '" + account +"%'";
-        console.log(queryStatement.trim());
-        request = new Request(queryStatement.trim(), function(err) {
-        if (err) {
-            console.log(err);
-          }
-        });
 
-        
 
-        var result = "";
-        request.on('row', function(columns) {
-            columns.forEach(function(column) {
-              if (column.value === null) {
-                console.log('NULL');
-              } else {
-                result+= column.value + " ";
-              }
-            });
-            console.log(result);
-            bot.session.send(result);
-            result ="";
-        });
 
-        request.on('done', function(rowCount, more) {
-        console.log(rowCount + ' rows returned');
-        });
-        connection.execSql(request);
-    }
 
 //post results to chat
 
     // console.log(keywords);
-    //   session.send( "The TE for " + keywords + "is " ); 
+      session.send( "The TE for " + keywords + "is " ); 
     //   executeAccountQuery('Hulu');
       session.endDialog("Session Ended");
       
