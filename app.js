@@ -131,6 +131,7 @@ var keywords = "";
 
     // console.log(keywords);
       session.send( "The TE for " + keywords + "is " ); 
+            session.send( "Another Send" ); 
     //   executeAccountQuery('Hulu');
       session.endDialog("Session Ended");
       
