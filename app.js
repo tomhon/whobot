@@ -15,6 +15,9 @@ var builder = require('botbuilder');
 var Request = require('tedious').Request;
 var TYPES = require('tedious').TYPES; 
 var Connection = require('tedious').Connection;
+
+var arrayIsvTE = [];
+
 var config = {
         userName: process.env.SQLuserName,
         password: process.env.SQLpassword,
@@ -64,7 +67,7 @@ var connectionSucceed = false;
               }
             });
             console.log(result);
-            bot.session.send(result);
+            arrayIsvTE.push(result);
             result ="";
         }); 
         
@@ -131,7 +134,7 @@ var keywords = "";
 
     // console.log(keywords);
       session.send( "The TE for " + keywords + "is " ); 
-            session.send( "Another Send" ); 
+            session.send( "The IsvTE mapping array is " + arrayIsvTE ); 
     //   executeAccountQuery('Hulu');
       session.endDialog("Session Ended");
       
