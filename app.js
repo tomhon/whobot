@@ -16,7 +16,9 @@ var Request = require('tedious').Request;
 var TYPES = require('tedious').TYPES; 
 var Connection = require('tedious').Connection;
 
+//initialize mapping data array
 var arrayIsvTE = [];
+
 
 var config = {
         userName: process.env.SQLuserName,
@@ -27,16 +29,14 @@ var config = {
     };
 
 var connection = new Connection(config);
-
-var connectionSucceed = false;
-
-    connection.on('connect', function(err) {
+connection.on('connect', function(err) {
     // If no error, then good to proceed.
         if (err) {
            console.log(err);
         } else {
-          console.log("Connected to " + this.config.server + " " + this.config.options.database);      
-          connectionSucceed = true;
+          console.log("Connected to " + this.config.server + " " + this.config.options.database);
+          arrayIsvTE.push("First item on mapping array");
+          loadMappingArray();    
         };
         
         
@@ -68,9 +68,10 @@ var connectionSucceed = false;
             result ="";
         }); 
         
-                request.on('done', function(rowCount, more) {
+        request.on('done', function(rowCount, more) {
         console.log(rowCount + ' rows returned');
         });
+        
         connection.execSql(request);
     };
 
@@ -87,25 +88,28 @@ bot.add('/', dialog);
 
 dialog.on('None', function (session, args, next) { 
     session.send( "Master! Welcome to K9 on Microsoft Bot Framework. I can tell you which TE or BE manages any GISV partner." ); 
-    loadMappingArray();
+          session.endDialog("Session Ended");
     });
 //---------------------------------------------------------------------------------------------------    
 //handle the case where intent is happy
 
 dialog.on('Happy', function (session, args, next) { 
     session.send( "Hope you enjoyed this as much as i did:-) " ); 
+          session.endDialog("Session Ended");
     });
 //---------------------------------------------------------------------------------------------------    
 //handle the case where intent is sad
 
 dialog.on('Sad', function (session, args, next) { 
-    session.send( "Life? Don't talk to me about life. Did you know I've got this terrible pain in all the diodes down my left side? " ); 
+    session.send( "Life? Don't talk to me about life. Did you know I've got this terrible pain in all the diodes down my left side? " );
+          session.endDialog("Session Ended"); 
     });    
 //---------------------------------------------------------------------------------------------------    
 //handle the case where intent is abuse
 
 dialog.on('Abuse', function (session, args, next) { 
     session.send( "Hey, don't be mean to me:-) " ); 
+          session.endDialog("Session Ended");
     });   
 
 //---------------------------------------------------------------------------------------------------
