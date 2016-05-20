@@ -128,9 +128,8 @@ var keywords = "";
 //post results to chat
 
     // console.log(keywords);
-    //   session.send( "The TE for " + keywords + "is " ); 
-            session.send( "The IsvTE mapping array is " + arrayIsvTE.length ); 
-    //   executeAccountQuery('Hulu');
+      session.send( "The TE for " + keywords + "is " + arrayIsvTE[0]); 
+      session.send( "The IsvTE mapping array is " + arrayIsvTE.length ); 
       session.endDialog("Session Ended");
       
      
