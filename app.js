@@ -18,7 +18,7 @@ var Connection = require('tedious').Connection;
 
 //initialize mapping data array
 var arrayIsvTE = [];
-
+arrayIsvTE.push("First item on mapping array");
 
 var config = {
         userName: process.env.SQLuserName,
@@ -35,7 +35,7 @@ connection.on('connect', function(err) {
            console.log(err);
         } else {
           console.log("Connected to " + this.config.server + " " + this.config.options.database);
-          arrayIsvTE.push("First item on mapping array");
+          arrayIsvTE.push("another item on mapping array");
           loadMappingArray();    
         };
         
@@ -44,7 +44,7 @@ connection.on('connect', function(err) {
  
  //function to execute SQL query    
     
-        function loadMappingArray() {
+ function loadMappingArray() {
       // request = new Request("SELECT c.CustomerID, c.CompanyName,COUNT(soh.SalesOrderID) AS OrderCount FROM SalesLT.Customer AS c LEFT OUTER JOIN SalesLT.SalesOrderHeader AS soh ON c.CustomerID = soh.CustomerID GROUP BY c.CustomerID, c.CompanyName ORDER BY OrderCount DESC;", function(err) {
 
         request = new Request("SELECT Title, AssignedTE FROM dbo.PartnerIsvs", function(err) {
