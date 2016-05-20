@@ -46,16 +46,13 @@ var connectionSucceed = false;
     
         function loadMappingArray() {
       // request = new Request("SELECT c.CustomerID, c.CompanyName,COUNT(soh.SalesOrderID) AS OrderCount FROM SalesLT.Customer AS c LEFT OUTER JOIN SalesLT.SalesOrderHeader AS soh ON c.CustomerID = soh.CustomerID GROUP BY c.CustomerID, c.CompanyName ORDER BY OrderCount DESC;", function(err) {
-        console.log(account);
-        var queryStatement = "SELECT Title, AssignedTE FROM dbo.PartnerIsvs";
-        console.log(queryStatement.trim());
-        request = new Request(queryStatement.trim(), function(err) {
+
+        request = new Request("SELECT Title, AssignedTE FROM dbo.PartnerIsvs", function(err) {
         if (err) {
             console.log(err);
           }
         });
 
-        
 
         result = "";
         request.on('row', function(columns) {
@@ -135,7 +132,7 @@ var keywords = "";
 
     // console.log(keywords);
       session.send( "The TE for " + keywords + "is " ); 
-            session.send( "The IsvTE mapping array is " + arrayIsvTE ); 
+            session.send( "The IsvTE mapping array is " + arrayIsvTE.length ); 
     //   executeAccountQuery('Hulu');
       session.endDialog("Session Ended");
       
