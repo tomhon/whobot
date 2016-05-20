@@ -44,7 +44,7 @@ var connectionSucceed = false;
  
  //function to execute SQL query    
     
-        function executeAccountQuery(account, result) {
+        function loadMappingArray() {
       // request = new Request("SELECT c.CustomerID, c.CompanyName,COUNT(soh.SalesOrderID) AS OrderCount FROM SalesLT.Customer AS c LEFT OUTER JOIN SalesLT.SalesOrderHeader AS soh ON c.CustomerID = soh.CustomerID GROUP BY c.CustomerID, c.CompanyName ORDER BY OrderCount DESC;", function(err) {
         console.log(account);
         var queryStatement = "SELECT Title, AssignedTE FROM dbo.PartnerIsvs";
@@ -90,6 +90,7 @@ bot.add('/', dialog);
 
 dialog.on('None', function (session, args, next) { 
     session.send( "Master! Welcome to K9 on Microsoft Bot Framework. I can tell you which TE or BE manages any GISV partner." ); 
+    loadMappingArray();
     });
 //---------------------------------------------------------------------------------------------------    
 //handle the case where intent is happy
