@@ -105,7 +105,7 @@ dialog.on('Sad', function (session, args, next) {
 //handle the case where intent is abuse
 
 dialog.on('Abuse', function (session, args, next) { 
-    session.send( "No, just because we're both using Microsft's AI doesn't mean I'm into racist abuse:-) " ); 
+    session.send( "Hey, don't be mean to me:-) " ); 
     });   
 
 //---------------------------------------------------------------------------------------------------
@@ -121,17 +121,10 @@ var account = builder.EntityRecognizer.findEntity(args.entities, 'Account');
 var keywords = "";
  if (account) {(keywords = keywords + account.entity + " ")};
 
-
-//  session.send( "Line 118 connectionSucceed is " + connectionSucceed); 
-    
-
-
-
-
 //post results to chat
 
     // console.log(keywords);
-      session.send( "The TE for " + keywords + "is " ); 
+    //   session.send( "The TE for " + keywords + "is " ); 
             session.send( "The IsvTE mapping array is " + arrayIsvTE.length ); 
     //   executeAccountQuery('Hulu');
       session.endDialog("Session Ended");
