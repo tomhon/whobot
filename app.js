@@ -141,6 +141,8 @@ var account = builder.EntityRecognizer.findEntity(args.entities, 'Account');
 var keywords = "";
  if (account) {(keywords = keywords + account.entity + " ")};
 
+        session.send( "Looking for the TE for " + keywords + "in partnerISV array length" + partnerISV.length); 
+
 var x = 0;
 
 console.log("Looking for account");
