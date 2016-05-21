@@ -154,7 +154,7 @@ while ( x < partnerISV.length) {
 //         // console.log(partnerISV[x][0] +" " + partnerISV[x][1]);
 //         //post results to chat
         session.send( "The TE for " + searchAccount + " is " + partnerISV[x][1]); 
-//         x = partnerISV.length;
+        x = partnerISV.length;
     };
     x++;
     };
