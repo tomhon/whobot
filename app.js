@@ -104,7 +104,8 @@ bot.add('/', dialog);
 
 dialog.on('None', function (session, args, next) { 
     session.send( "Master! Welcome to K9 on Microsoft Bot Framework. I can tell you which TE or BE manages any GISV partner." ); 
-          session.endDialog("Session Ended");
+    session.send( "partnerISV array length" + partnerISV.length); 
+    session.endDialog("Session Ended");
     });
 //---------------------------------------------------------------------------------------------------    
 //handle the case where intent is happy
@@ -139,10 +140,11 @@ var account = builder.EntityRecognizer.findEntity(args.entities, 'Account');
 
 // assemble the query using identified entities   
 var keywords = "";
- if (account) {(keywords = keywords + account.entity + " ")};
 
-        session.send( "Looking for the TE for " + keywords + "in partnerISV array length" + partnerISV.length); 
+if (account) {(keywords = keywords + account.entity + " ")};
 
+session.send( "Looking for the TE for " + keywords); 
+session.send( "in partnerISV array length" + partnerISV.length); 
 var x = 0;
 
 console.log("Looking for account");
