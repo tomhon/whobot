@@ -149,7 +149,7 @@ var x = 0;
 
 // // console.log("Looking for account");
 while ( x < partnerISV.length) {
-    session.send(parnerISV[x][0], partnerISV[x][1]); 
+    session.send(partnerISV[x][0], partnerISV[x][1]); 
     if (partnerISV[x][0] == searchAccount) {
 //         // console.log(partnerISV[x][0] +" " + partnerISV[x][1]);
 //         //post results to chat
