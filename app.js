@@ -17,8 +17,24 @@ var TYPES = require('tedious').TYPES;
 var Connection = require('tedious').Connection;
 
 //initialize mapping data array
-var arrayIsvTE = [];
-arrayIsvTE.push("First item on mapping array");
+
+var partnerISV = new Array(5);
+
+partnerISV[0]= new Array(2);
+partnerISV[0][0] = 'Snapchat Inc';
+partnerISV[0][1] = 'James Cadd <jacadd@microsoft.com>';
+partnerISV[1]= new Array(2);
+partnerISV[1][0] = 'Twitter Inc';
+partnerISV[1][1] = 'Chris Barker <cbarker@microsoft.com>';
+partnerISV[2]= new Array(2);
+partnerISV[2][0] = 'Yahoo!';
+partnerISV[2][1] = 'Maarten van de Bospoort <maartenb@microsoft.com>';
+partnerISV[3]= new Array(2);
+partnerISV[3][0] = 'baidu';
+partnerISV[3][1] = 'Yansong Li <yansongl@microsoft.com>';
+
+
+//set up SQL server connection
 
 var config = {
         userName: process.env.SQLuserName,
@@ -35,8 +51,8 @@ connection.on('connect', function(err) {
            console.log(err);
         } else {
           console.log("Connected to " + this.config.server + " " + this.config.options.database);
-          arrayIsvTE.push("another item on mapping array");
-          loadMappingArray();    
+        //   arrayIsvTE.push("another item on mapping array");
+        //   loadMappingArray();    
         };
         
         
@@ -125,11 +141,24 @@ var account = builder.EntityRecognizer.findEntity(args.entities, 'Account');
 var keywords = "";
  if (account) {(keywords = keywords + account.entity + " ")};
 
-//post results to chat
+var x = 0;
+
+console.log("Looking for account");
+while ( x < partnerISV.length) {
+    console.log(x);
+    if (partnerISV[x][0] == account.entity) {
+        console.log(partnerISV[x][0] +" " + partnerISV[x][1]);
+        //post results to chat
+        session.send( "The TE for " + keywords + "is " + partnerISV[x][1]); 
+        x = partnerISV.length;
+    };
+    x++;
+    };
+
+
+
 
     // console.log(keywords);
-      session.send( "The TE for " + keywords + "is " + arrayIsvTE[0]); 
-      session.send( "The IsvTE mapping array is " + arrayIsvTE.length ); 
       session.endDialog("Session Ended");
       
      
