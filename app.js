@@ -21,16 +21,16 @@ var Connection = require('tedious').Connection;
 var partnerISV = new Array(5);
 
 partnerISV[0]= new Array(2);
-partnerISV[0][0] = 'Snapchat Inc';
+partnerISV[0][0] = 'Snapchat'.toLowerCase();
 partnerISV[0][1] = 'James Cadd <jacadd@microsoft.com>';
 partnerISV[1]= new Array(2);
-partnerISV[1][0] = 'Twitter Inc';
+partnerISV[1][0] = 'Twitter'.toLowerCase();
 partnerISV[1][1] = 'Chris Barker <cbarker@microsoft.com>';
 partnerISV[2]= new Array(2);
-partnerISV[2][0] = 'Yahoo!';
+partnerISV[2][0] = 'Yahoo'.toLowerCase();
 partnerISV[2][1] = 'Maarten van de Bospoort <maartenb@microsoft.com>';
 partnerISV[3]= new Array(2);
-partnerISV[3][0] = 'baidu';
+partnerISV[3][0] = 'baidu'.toLowerCase();
 partnerISV[3][1] = 'Yansong Li <yansongl@microsoft.com>';
 
 
@@ -105,28 +105,28 @@ bot.add('/', dialog);
 dialog.on('None', function (session, args, next) { 
     session.send( "Master! Welcome to K9 on Microsoft Bot Framework. I can tell you which TE or BE manages any GISV partner." ); 
     session.send( "Partner data is live = " + (partnerISV.length > 0)); 
-    session.endDialog("Session Ended");
+    // session.endDialog("Session Ended");
     });
 //---------------------------------------------------------------------------------------------------    
 //handle the case where intent is happy
 
 dialog.on('Happy', function (session, args, next) { 
     session.send( "Hope you enjoyed this as much as i did:-) " ); 
-          session.endDialog("Session Ended");
+        //   session.endDialog("Session Ended");
     });
 //---------------------------------------------------------------------------------------------------    
 //handle the case where intent is sad
 
 dialog.on('Sad', function (session, args, next) { 
     session.send( "Life? Don't talk to me about life. Did you know I've got this terrible pain in all the diodes down my left side? " );
-          session.endDialog("Session Ended"); 
+        //   session.endDialog("Session Ended"); 
     });    
 //---------------------------------------------------------------------------------------------------    
 //handle the case where intent is abuse
 
 dialog.on('Abuse', function (session, args, next) { 
     session.send( "Hey, don't be mean to me:-) " ); 
-          session.endDialog("Session Ended");
+        //   session.endDialog("Session Ended");
     });   
 
 //---------------------------------------------------------------------------------------------------
