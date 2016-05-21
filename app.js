@@ -139,25 +139,25 @@ dialog.on('Find_TE', function (session, args, next) {
 var account = builder.EntityRecognizer.findEntity(args.entities, 'Account'); 
 
 // assemble the query using identified entities   
-var keywords = "";
+var searchAccount = "";
 
 if (account) {(searchAccount = account.entity)};
 
 session.send( "Looking for the TE for " + searchAccount); 
 session.send( "in partnerISV array length" + partnerISV.length); 
-var x = 0;
+// var x = 0;
 
-console.log("Looking for account");
-while ( x < partnerISV.length) {
-    session.send(partnerISV[x][1]); 
-    if (partnerISV[x][0] == searchAccount) {
-        // console.log(partnerISV[x][0] +" " + partnerISV[x][1]);
-        //post results to chat
-        session.send( "The TE for " + searchAccount + "is " + partnerISV[x][1]); 
-        x = partnerISV.length;
-    };
-    x++;
-    };
+// // console.log("Looking for account");
+// while ( x < partnerISV.length) {
+//     session.send(partnerISV[x][1]); 
+//     if (partnerISV[x][0] == searchAccount) {
+//         // console.log(partnerISV[x][0] +" " + partnerISV[x][1]);
+//         //post results to chat
+//         session.send( "The TE for " + searchAccount + "is " + partnerISV[x][1]); 
+//         x = partnerISV.length;
+//     };
+//     x++;
+//     };
 
 
 
