@@ -104,7 +104,7 @@ bot.add('/', dialog);
 
 dialog.on('None', function (session, args, next) { 
     session.send( "Master! Welcome to K9 on Microsoft Bot Framework. I can tell you which TE or BE manages any GISV partner." ); 
-    session.send( "Partner data is live = " + partnerISV.length > 0); 
+    session.send( "Partner data is live = " , (partnerISV.length > 0)); 
     session.endDialog("Session Ended");
     });
 //---------------------------------------------------------------------------------------------------    
@@ -144,12 +144,12 @@ var searchAccount = "";
 if (account) {(searchAccount = account.entity)};
 
 session.send( "Looking for the TE for " + searchAccount); 
-session.send( "in partnerISV array length" + partnerISV.length); 
+// session.send( "in partnerISV array length" + partnerISV.length); 
 var x = 0;
 
 // // console.log("Looking for account");
 while ( x < partnerISV.length) {
-    session.send(parnerISV[x][0] + partnerISV[x][1]); 
+    session.send(parnerISV[x][0], partnerISV[x][1]); 
     if (partnerISV[x][0] == searchAccount) {
 //         // console.log(partnerISV[x][0] +" " + partnerISV[x][1]);
 //         //post results to chat
