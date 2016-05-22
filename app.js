@@ -63,7 +63,7 @@ connection.on('connect', function(err) {
         } else {
           console.log("Connected to " + this.config.server + " " + this.config.options.database);
           arrayErr.push("Connected to SQL Server");
-          loadMappingArray();    
+        //   loadMappingArray();    
         };
         
         
