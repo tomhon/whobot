@@ -18,7 +18,11 @@ var Connection = require('tedious').Connection;
 
 //initialize mapping data array
 
+//partnerISV is locally sourced mapping data for testing
 var partnerISV = new Array(5);
+
+//arrayIsvTE is sourced from SQL Server
+var arrayIsvTE = new Array();
 
 partnerISV[0]= new Array(2);
 partnerISV[0][0] = 'Snapchat'.toLowerCase();
@@ -51,8 +55,8 @@ connection.on('connect', function(err) {
            console.log(err);
         } else {
           console.log("Connected to " + this.config.server + " " + this.config.options.database);
-        //   arrayIsvTE.push("another item on mapping array");
-        //   loadMappingArray();    
+          arrayIsvTE.push("First item on mapping array");
+          loadMappingArray();    
         };
         
         
@@ -92,7 +96,9 @@ connection.on('connect', function(err) {
     };
 
 // Create bot and add dialogs
-var bot = new builder.BotConnectorBot({ appId: process.env.AppID, appSecret: process.env.AppSecret });
+setTimeout(function() {
+    var bot = new builder.BotConnectorBot({ appId: process.env.AppID, appSecret: process.env.AppSecret });
+},5000);
 
 // Connect to LUIS application
 var dialog = new builder.LuisDialog(process.env.LUISServiceURL);
@@ -104,7 +110,8 @@ bot.add('/', dialog);
 
 dialog.on('None', function (session, args, next) { 
     session.send( "Master! Welcome to K9 on Microsoft Bot Framework. I can tell you which TE or BE manages any GISV partner." ); 
-    session.send( "Partner data is live = " + (partnerISV.length > 0)); 
+    session.send( "Local Partner data is live = " + (partnerISV.length > 0)); 
+    session.send( "Remote Partner data is live = " + (arrayIsvTE.length > 0)); 
     // session.endDialog("Session Ended");
     });
 //---------------------------------------------------------------------------------------------------    
