@@ -55,11 +55,11 @@ connection.on('connect', function(err) {
     
         if (err) {
            console.log(err);
-            // arrayIsvTE.push(err);
+            arrayIsvTE.push(err);
         } else {
           console.log("Connected to " + this.config.server + " " + this.config.options.database);
           arrayIsvTE.push("First item on mapping array");
-          loadMappingArray();    
+        //   loadMappingArray();    
         };
         
         
@@ -115,7 +115,7 @@ bot.add('/', dialog);
 dialog.on('None', function (session, args, next) { 
     session.send( "Master! Welcome to K9 on Microsoft Bot Framework. I can tell you which TE or BE manages any GISV partner." ); 
     session.send( "Local Partner data is live = " + (partnerISV.length > 0)); 
-    // session.send( "Remote Partner data is live = " + arrayIsvTE[0]); 
+    session.send( "Remote Partner data is live = " + arrayIsvTE[0]); 
     // session.endDialog("Session Ended");
     });
 //---------------------------------------------------------------------------------------------------    
