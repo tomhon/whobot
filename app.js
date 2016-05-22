@@ -62,7 +62,7 @@ connection.on('connect', function(err) {
             arrayErr.push(err);
         } else {
           console.log("Connected to " + this.config.server + " " + this.config.options.database);
-          arrayErr.push("Connected to SQL Server" + this.config.server);
+          arrayErr.push("Connected to SQL Server " + this.config.server);
           loadMappingArray();    
         };
         
@@ -75,14 +75,15 @@ connection.on('connect', function(err) {
       // request = new Request("SELECT c.CustomerID, c.CompanyName,COUNT(soh.SalesOrderID) AS OrderCount FROM SalesLT.Customer AS c LEFT OUTER JOIN SalesLT.SalesOrderHeader AS soh ON c.CustomerID = soh.CustomerID GROUP BY c.CustomerID, c.CompanyName ORDER BY OrderCount DESC;", function(err) {
         arrayErr.push("entered loadMappingArray");
         // request = new Request("SELECT Title, AssignedTE FROM dbo.PartnerIsvs", function(err) {
-        // request = new Request("SELECT PartnerName, TEName FROM dbo.partners", function(err) {
-        // // if (err) {
-        // //     console.log(err);
-        // //     arrayErr.push("SQL request failed");
-        // //   } else {
+        request = new Request("SELECT PartnerName, TEName FROM dbo.partners", function(err) {
+        if (err) {
+            console.log(err);
+            arrayErr.push(err);
+          } 
+        // else {
         // //     arrayErr.push("SQL request succeeded");
         // //   }
-        // });
+        });
         arrayErr.push("set up request");
 
         // result = "";
