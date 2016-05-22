@@ -23,7 +23,7 @@ var partnerISV = new Array(5);
 
 //arrayIsvTE is sourced from SQL Server
 var arrayIsvTE = new Array();
-arrayIsvTE.push("First item on mapping array");
+// arrayIsvTE.push("First item on mapping array");
 
 partnerISV[0]= new Array(2);
 partnerISV[0][0] = 'Snapchat'.toLowerCase();
@@ -52,8 +52,10 @@ var config = {
 var connection = new Connection(config);
 connection.on('connect', function(err) {
     // If no error, then good to proceed.
+    
         if (err) {
            console.log(err);
+           arrayIsvTE.push("First item on mapping array");
         } else {
           console.log("Connected to " + this.config.server + " " + this.config.options.database);
           arrayIsvTE.push("First item on mapping array");
