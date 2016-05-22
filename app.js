@@ -25,6 +25,10 @@ var partnerISV = new Array(5);
 var arrayIsvTE = new Array();
 // arrayIsvTE.push("First item on mapping array");
 
+//error array
+var arrayErr = new Array();
+
+
 partnerISV[0]= new Array(2);
 partnerISV[0][0] = 'Snapchat'.toLowerCase();
 partnerISV[0][1] = 'James Cadd <jacadd@microsoft.com>';
@@ -55,10 +59,10 @@ connection.on('connect', function(err) {
     
         if (err) {
            console.log(err);
-            arrayIsvTE.push(err);
+            arrayErr.push(err);
         } else {
           console.log("Connected to " + this.config.server + " " + this.config.options.database);
-          arrayIsvTE.push("First item on mapping array");
+          arrayErr.push("Connected to SQL Server");
         //   loadMappingArray();    
         };
         
@@ -115,7 +119,7 @@ bot.add('/', dialog);
 dialog.on('None', function (session, args, next) { 
     session.send( "Master! Welcome to K9 on Microsoft Bot Framework. I can tell you which TE or BE manages any GISV partner." ); 
     session.send( "Local Partner data is live = " + (partnerISV.length > 0)); 
-    session.send( "Remote Partner data is live = " + arrayIsvTE[0]); 
+    session.send( "Remote Partner data is live = " + arrayErr[0]); 
     // session.endDialog("Session Ended");
     });
 //---------------------------------------------------------------------------------------------------    
