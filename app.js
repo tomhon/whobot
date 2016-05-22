@@ -78,29 +78,32 @@ connection.on('connect', function(err) {
         request = new Request("SELECT PartnerName, TEName FROM dbo.partners", function(err) {
         if (err) {
             console.log(err);
+            arrayErr.push("SQL request failed");
+          } else {
+            arrayErr.push("SQL request succeeded");
           }
         });
 
 
-        result = "";
-        request.on('row', function(columns) {
-            columns.forEach(function(column) {
-              if (column.value === null) {
-                console.log('NULL');
-              } else {
-                result+= column.value + " ";
-              }
-            });
-            console.log(result);
-            arrayIsvTE.push(result);
-            result ="";
-        }); 
+        // result = "";
+        // request.on('row', function(columns) {
+        //     columns.forEach(function(column) {
+        //       if (column.value === null) {
+        //         console.log('NULL');
+        //       } else {
+        //         result+= column.value + " ";
+        //       }
+        //     });
+        //     console.log(result);
+        //     arrayIsvTE.push(result);
+        //     result ="";
+        // }); 
         
-        request.on('done', function(rowCount, more) {
-        console.log(rowCount + ' rows returned');
-        });
+        // request.on('done', function(rowCount, more) {
+        // console.log(rowCount + ' rows returned');
+        // });
         
-        connection.execSql(request);
+        // connection.execSql(request);
     };
 
 // Create bot and add dialogs
@@ -120,6 +123,7 @@ dialog.on('None', function (session, args, next) {
     session.send( "Master! Welcome to K9 on Microsoft Bot Framework. I can tell you which TE or BE manages any GISV partner." ); 
     session.send( "Local Partner data is live = " + (partnerISV.length > 0)); 
     session.send( "Remote Partner data is live = " + arrayErr[0]); 
+    session.send( "Remote Partner data is live = " + arrayErr[1]); 
     // session.endDialog("Session Ended");
     });
 //---------------------------------------------------------------------------------------------------    
