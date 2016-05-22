@@ -75,15 +75,15 @@ connection.on('connect', function(err) {
       // request = new Request("SELECT c.CustomerID, c.CompanyName,COUNT(soh.SalesOrderID) AS OrderCount FROM SalesLT.Customer AS c LEFT OUTER JOIN SalesLT.SalesOrderHeader AS soh ON c.CustomerID = soh.CustomerID GROUP BY c.CustomerID, c.CompanyName ORDER BY OrderCount DESC;", function(err) {
         arrayErr.push("entered loadMappingArray");
         // request = new Request("SELECT Title, AssignedTE FROM dbo.PartnerIsvs", function(err) {
-        // request = new Request("SELECT PartnerName, TEName FROM dbo.partners", function(err) {
+        request = new Request("SELECT PartnerName, TEName FROM dbo.partners", function(err) {
         // if (err) {
         //     console.log(err);
         //     arrayErr.push("SQL request failed");
         //   } else {
         //     arrayErr.push("SQL request succeeded");
         //   }
-        // });
-
+        });
+        arrayErr.push("set up request");
 
         // result = "";
         // request.on('row', function(columns) {
@@ -124,7 +124,8 @@ dialog.on('None', function (session, args, next) {
     session.send( "Local Partner data is live = " + (partnerISV.length > 0)); 
     session.send( "Remote Partner data is live = " + arrayErr[0]); 
     session.send( "Remote Partner data is live = " + arrayErr[1]); 
-    // session.endDialog("Session Ended");
+    session.send( "Remote Partner data is live = " + arrayErr[2]); 
+          // session.endDialog("Session Ended");
     });
 //---------------------------------------------------------------------------------------------------    
 //handle the case where intent is happy
