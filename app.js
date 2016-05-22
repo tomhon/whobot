@@ -55,7 +55,7 @@ connection.on('connect', function(err) {
     
         if (err) {
            console.log(err);
-           arrayIsvTE.push("First item on mapping array");
+        //    arrayIsvTE.push("First item on mapping array");
         } else {
           console.log("Connected to " + this.config.server + " " + this.config.options.database);
           arrayIsvTE.push("First item on mapping array");
