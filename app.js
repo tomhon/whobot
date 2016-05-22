@@ -96,9 +96,9 @@ connection.on('connect', function(err) {
     };
 
 // Create bot and add dialogs
-setTimeout(function() {
+// setTimeout(function() {
     var bot = new builder.BotConnectorBot({ appId: process.env.AppID, appSecret: process.env.AppSecret });
-},5000);
+// },5000);
 
 // Connect to LUIS application
 var dialog = new builder.LuisDialog(process.env.LUISServiceURL);
