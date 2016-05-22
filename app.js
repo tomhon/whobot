@@ -23,6 +23,7 @@ var partnerISV = new Array(5);
 
 //arrayIsvTE is sourced from SQL Server
 var arrayIsvTE = new Array();
+arrayIsvTE.push("First item on mapping array");
 
 partnerISV[0]= new Array(2);
 partnerISV[0][0] = 'Snapchat'.toLowerCase();
