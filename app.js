@@ -75,7 +75,7 @@ connection.on('connect', function(err) {
       // request = new Request("SELECT c.CustomerID, c.CompanyName,COUNT(soh.SalesOrderID) AS OrderCount FROM SalesLT.Customer AS c LEFT OUTER JOIN SalesLT.SalesOrderHeader AS soh ON c.CustomerID = soh.CustomerID GROUP BY c.CustomerID, c.CompanyName ORDER BY OrderCount DESC;", function(err) {
         arrayErr.push("entered loadMappingArray");
         // request = new Request("SELECT Title, AssignedTE FROM dbo.PartnerIsvs", function(err) {
-        // request = new Request("SELECT PartnerName, TEName FROM dbo.partners", function(err) {
+        request = new Request("SELECT PartnerName, TEName FROM dbo.partners", function(err) {
         // if (err) {
         //     console.log(err);
         //     arrayErr.push(err);
@@ -83,7 +83,7 @@ connection.on('connect', function(err) {
         // else {
         //     arrayErr.push("SQL request succeeded");
         //   }
-        // });
+        });
         arrayErr.push("set up request");
 
         // result = "";
