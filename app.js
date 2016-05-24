@@ -61,7 +61,7 @@ connection.on('connect', function(err) {
             arrayErr.push(err);
         } else {
         //   console.log("Connected to " + this.config.server + " " + this.config.options.database);
-          arrayErr.push("Connected to SQL Server " + this.config.server);
+          arrayErr.push("Connected to " + this.config.server);
           loadMappingArray();    
         };
         
@@ -73,7 +73,7 @@ connection.on('connect', function(err) {
  function loadMappingArray() {
       // request = new Request("SELECT c.CustomerID, c.CompanyName,COUNT(soh.SalesOrderID) AS OrderCount FROM SalesLT.Customer AS c LEFT OUTER JOIN SalesLT.SalesOrderHeader AS soh ON c.CustomerID = soh.CustomerID GROUP BY c.CustomerID, c.CompanyName ORDER BY OrderCount DESC;", function(err) {
 
-        request = new Request("SELECT Title, AssignedTE FROM dbo.PartnerIsvs", function(err) {
+        request = new Request("SELECT Title, AssignedTE, AssignedBE FROM dbo.PartnerIsvs", function(err) {
         // request = new Request("SELECT PartnerName, TEName FROM dbo.partners", function(err) {
         if (err) {
             console.log(err);
@@ -230,9 +230,10 @@ if (!account) {
         while ( x < arrayIsvTE.length) {
             if (arrayIsvTE[x].match(searchAccount)) {
             //post results to chat
-                session.send( "The BE for " + arrayIsvTE[x] + " is " + arrayIsvTE[x+1]); 
-                found = true;
-                };
+                if(arrayIsvTE[x+2]) {
+                    session.send( "The BE for " + arrayIsvTE[x] + " is " + arrayIsvTE[x+2]); 
+                    found = true;
+                    }
             x++;
             x++;
             };
