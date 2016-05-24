@@ -116,9 +116,9 @@ dialog.on('Fetch', function (session, args, next) {
     // session.send( "Local Partner data is live = " + (partnerISV.length > 0)); 
 //list all errors
     arrayErr.forEach(function(item) {
-        session.send( "Remote Partner data is live = " + item); 
+        session.send( "K9 Bot = " + item); 
     });
-    session.send( "Remote Partner data is live = " + (arrayIsvTE.length > 0)); 
+    session.send( "K9 data is live = " + (arrayIsvTE.length > 0)); 
               // session.endDialog("Session Ended");
     });
 
@@ -209,23 +209,39 @@ dialog.on('Find_BE', function (session, args, next) {
 var account = builder.EntityRecognizer.findEntity(args.entities, 'Account'); 
 
 // assemble the query using identified entities   
-var keywords = "";
- if (account) {(keywords = keywords +account.entity + " ")};
+var searchAccount = "";
 
+//create regex version of the searchAccount
+if (!account) {
+        session.send("Sorry, I couldn't make out the name of the account you are looking for.");
+} else { 
+        (searchAccount = new RegExp(account.entity, 'i'))
 
-    console.log(keywords);
-      session.send( "The BE for " + keywords + " is "); 
+        // Next line to assist with debugging
+        // session.send( "Looking for the TE for " + searchAccount); 
 
-// Find BE for account
+        //search mapping array for searchAccount
+        var x = 0;
+        var found = false;
+                // Next line to assist with debugging
+                // // console.log("Looking for account");
+        while ( x < arrayIsvTE.length) {
+            if (arrayIsvTE[x].match(searchAccount)) {
+            //post results to chat
+                session.send( "The BE for " + arrayIsvTE[x] + " is " + arrayIsvTE[x+1]); 
+                found = true;
+                };
+            x++;
+            x++;
+            };
+            if (!found) {
+                session.send( "Sorry, I couldn't find the BE for " + account.entity)
+                };
 
-
-
-
-
-
-
-      
-    });
+            // next line to assist with debug
+            //   session.endDialog("Session Ended");
+            
+        }});
 
 //---------------------------------------------------------------------------------------------------
 // Setup Restify Server
