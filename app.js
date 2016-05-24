@@ -123,13 +123,12 @@ bot.add('/', dialog);
 dialog.on('None', function (session, args, next) { 
     session.send( "Master! Welcome to K9 on Microsoft Bot Framework. I can tell you which TE or BE manages any GISV partner." ); 
     session.send( "Local Partner data is live = " + (partnerISV.length > 0)); 
-        session.send( "Remote Partner data is live = " + arrayErr[0]); 
+//list all errors
     arrayErr.forEach(function(item) {
         session.send( "Remote Partner data is live = " + item); 
     });
+    session.send( "Remote Partner data is live = " + (arrayIsvTE.length > 0)); 
 
-    // session.send( "Remote Partner data is live = " + arrayErr[1]); 
-    // session.send( "Remote Partner data is live = " + arrayErr[2]); 
           // session.endDialog("Session Ended");
     });
 //---------------------------------------------------------------------------------------------------    
