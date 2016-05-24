@@ -45,13 +45,13 @@ partnerISV[3][1] = 'Yansong Li <yansongl@microsoft.com>';
 
 //set up SQL server connection
 
-var config = {
-        userName: process.env.SQLuserName,
-        password: process.env.SQLpassword,
-        server: process.env.SQLserver,
-        // If you are on Microsoft Azure, you need this:
-        options: {encrypt: true, database: process.env.SQLdatabase}
-    };
+    var config = {
+            userName: process.env.SQLuserName,
+            password: process.env.SQLpassword,
+            server: process.env.SQLserver,
+            // If you are on Microsoft Azure, you need this:
+            options: {encrypt: true, database: process.env.SQLdatabase}
+        };
 
 var connection = new Connection(config);
 connection.on('connect', function(err) {
@@ -104,7 +104,7 @@ connection.on('connect', function(err) {
         // console.log(rowCount + ' rows returned');
         // });
         
-        // connection.execSql(request);
+        connection.execSql(request);
     };
 
 // Create bot and add dialogs
