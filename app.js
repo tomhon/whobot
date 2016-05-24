@@ -76,13 +76,13 @@ connection.on('connect', function(err) {
         arrayErr.push("entered loadMappingArray");
         // request = new Request("SELECT Title, AssignedTE FROM dbo.PartnerIsvs", function(err) {
         request = new Request("SELECT PartnerName, TEName FROM dbo.partners", function(err) {
-        // if (err) {
-        //     console.log(err);
-        //     arrayErr.push(err);
-        //   }
-        // else {
-        //     arrayErr.push("SQL request succeeded");
-        //   }
+        if (err) {
+            console.log(err);
+            arrayErr.push(err);
+          }
+        else {
+            arrayErr.push("SQL request succeeded");
+          }
         });
         arrayErr.push("set up request");
 
