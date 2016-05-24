@@ -179,7 +179,8 @@ var account = builder.EntityRecognizer.findEntity(args.entities, 'Account');
 // assemble the query using identified entities   
 var searchAccount = "";
 
-if (account) {(searchAccount = account.entity)};
+//create regex version of the searchAccount
+if (account) {(searchAccount = '/' + account.entity + '/i')};
 
 session.send( "Looking for the TE for " + searchAccount); 
 // session.send( "in partnerISV array length" + partnerISV.length); 
@@ -188,7 +189,7 @@ var x = 0;
 // // console.log("Looking for account");
 while ( x < arrayIsvTE.length) {
     // session.send(partnerISV[x][0]); 
-    if (arrayIsvTE[x].match(searchAccount + '/i')) {
+    if (arrayIsvTE[x].match(searchAccount)) {
     // if (arrayIsvTE[x].toUpperCase() == searchAccount.toUpperCase()) {
 
 //         //post results to chat
