@@ -86,19 +86,19 @@ connection.on('connect', function(err) {
         });
         arrayErr.push("set up request");
 
-        // result = "";
-        // request.on('row', function(columns) {
-        //     columns.forEach(function(column) {
-        //       if (column.value === null) {
-        //         console.log('NULL');
-        //       } else {
-        //         result+= column.value + " ";
-        //       }
-        //     });
-        //     console.log(result);
-        //     arrayIsvTE.push(result);
-        //     result ="";
-        // }); 
+        result = "";
+        request.on('row', function(columns) {
+            columns.forEach(function(column) {
+              if (column.value === null) {
+                console.log('NULL');
+              } else {
+                result+= column.value + " ";
+              }
+            });
+            console.log(result);
+            arrayIsvTE.push(result);
+            result ="";
+        }); 
         
         // request.on('done', function(rowCount, more) {
         // console.log(rowCount + ' rows returned');
