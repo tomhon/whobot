@@ -185,7 +185,7 @@ var searchAccount = "";
 
 //create regex version of the searchAccount
 if (!account) {
-        session.send("Sorry, I couldn't make out the name of the account.");
+        session.send("Sorry, I couldn't make out the name of the account you are looking for.");
 } else { 
         (searchAccount = new RegExp(account.entity, 'i'))
 
@@ -197,7 +197,7 @@ if (!account) {
         var found = false;
                 // Next line to assist with debugging
                 // // console.log("Looking for account");
-        while ( x < arrayIsvTE.length && !found) {
+        while ( x < arrayIsvTE.length) {
             if (arrayIsvTE[x].match(searchAccount)) {
             //post results to chat
                 session.send( "The TE for " + arrayIsvTE[x] + " is " + arrayIsvTE[x+1]); 
