@@ -192,6 +192,7 @@ if (!account) {
                 };
             x++;
             x++;
+            x++;
             };
             if (!found) {
                 session.send( "Sorry, I couldn't find the TE for " + account.entity)
@@ -235,6 +236,7 @@ if (!account) {
                     found = true;
                     }
                 };
+            x++;
             x++;
             x++;
             };
