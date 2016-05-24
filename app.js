@@ -180,7 +180,7 @@ var account = builder.EntityRecognizer.findEntity(args.entities, 'Account');
 var searchAccount = "";
 
 //create regex version of the searchAccount
-if (account) {(searchAccount = '/' + account.entity + '/i')};
+if (account) {(searchAccount = new RegExp(account.entity, 'i'))};
 
 session.send( "Looking for the TE for " + searchAccount); 
 // session.send( "in partnerISV array length" + partnerISV.length); 
