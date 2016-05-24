@@ -184,37 +184,36 @@ var account = builder.EntityRecognizer.findEntity(args.entities, 'Account');
 var searchAccount = "";
 
 //create regex version of the searchAccount
-if (account) {
-    (searchAccount = new RegExp(account.entity, 'i'))
-} else {
-    session.endDialog("Sorry, I couldn't make out the name of the account.");
-}
+if (!account) {
+        session.send("Sorry, I couldn't make out the name of the account.");
+} else { 
+        (searchAccount = new RegExp(account.entity, 'i'))
 
-// Next line to assist with debugging
-// session.send( "Looking for the TE for " + searchAccount); 
-
-//search mapping array for searchAccount
-var x = 0;
-var found = false;
         // Next line to assist with debugging
-        // // console.log("Looking for account");
-while ( x < arrayIsvTE.length && !found) {
-    if (arrayIsvTE[x].match(searchAccount)) {
-      //post results to chat
-        session.send( "The TE for " + arrayIsvTE[x] + " is " + arrayIsvTE[x+1]); 
-        found = true;
-        };
-    x++;
-    x++;
-    };
-    if (!found) {
-        session.send( "Sorry, I couldn't find the TE for " + account.entity)
-        };
+        // session.send( "Looking for the TE for " + searchAccount); 
 
-    // next line to assist with debug
-    //   session.endDialog("Session Ended");
-      
-    });
+        //search mapping array for searchAccount
+        var x = 0;
+        var found = false;
+                // Next line to assist with debugging
+                // // console.log("Looking for account");
+        while ( x < arrayIsvTE.length && !found) {
+            if (arrayIsvTE[x].match(searchAccount)) {
+            //post results to chat
+                session.send( "The TE for " + arrayIsvTE[x] + " is " + arrayIsvTE[x+1]); 
+                found = true;
+                };
+            x++;
+            x++;
+            };
+            if (!found) {
+                session.send( "Sorry, I couldn't find the TE for " + account.entity)
+                };
+
+            // next line to assist with debug
+            //   session.endDialog("Session Ended");
+            
+        }});
 //---------------------------------------------------------------------------------------------------
 //handle the Find Business Evangelist Find_BE intent
 
