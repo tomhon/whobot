@@ -95,8 +95,6 @@ connection.on('connect', function(err) {
             });
         }); 
 
-       
-        
         connection.execSql(request);
     };
 
@@ -109,12 +107,12 @@ connection.on('connect', function(err) {
 var dialog = new builder.LuisDialog(process.env.LUISServiceURL);
 bot.add('/', dialog);
 
-// });
 
-//handle the case where there's no recognized intent
+//---------------------------------------------------------------------------------------------------    
+//handle the case where there's a request to reload data
 
-dialog.on('None', function (session, args, next) { 
-    session.send( "Master! Welcome to K9 on Microsoft Bot Framework. I can tell you which TE or BE manages any GISV partner." ); 
+dialog.on('Fetch', function (session, args, next) { 
+    session.send( "Welcome to K9 on Microsoft Bot Framework. I can tell you which TE or BE manages any GISV partner." ); 
     // session.send( "Local Partner data is live = " + (partnerISV.length > 0)); 
 //list all errors
     arrayErr.forEach(function(item) {
@@ -123,26 +121,31 @@ dialog.on('None', function (session, args, next) {
     session.send( "Remote Partner data is live = " + (arrayIsvTE.length > 0)); 
               // session.endDialog("Session Ended");
     });
+
+//---------------------------------------------------------------------------------------------------    
+//handle the case where there's no recognized intent
+
+dialog.on('None', function (session, args, next) { 
+    session.send( "Welcome to K9 on Microsoft Bot Framework. I can tell you which TE or BE manages any GISV partner." ); 
+    });
 //---------------------------------------------------------------------------------------------------    
 //handle the case where intent is happy
 
 dialog.on('Happy', function (session, args, next) { 
     session.send( "Hope you enjoyed this as much as i did:-) " ); 
-        //   session.endDialog("Session Ended");
+
     });
 //---------------------------------------------------------------------------------------------------    
 //handle the case where intent is sad
 
 dialog.on('Sad', function (session, args, next) { 
     session.send( "Life? Don't talk to me about life. Did you know I've got this terrible pain in all the diodes down my left side? " );
-        //   session.endDialog("Session Ended"); 
     });    
 //---------------------------------------------------------------------------------------------------    
 //handle the case where intent is abuse
 
 dialog.on('Abuse', function (session, args, next) { 
     session.send( "Hey, don't be mean to me:-) " ); 
-        //   session.endDialog("Session Ended");
     });   
 
 //---------------------------------------------------------------------------------------------------    
