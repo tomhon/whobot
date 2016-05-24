@@ -84,36 +84,18 @@ connection.on('connect', function(err) {
           }
         });
 
-
-
+//unpack data from SQL query
         request.on('row', function(columns) {
             columns.forEach(function(column) {
               if (column.value === null) {
-                console.log('NULL');
+                arrayIsvTE.push('');
               } else {
                 arrayIsvTE.push(column.value);
                   }
             });
         }); 
 
-        // result = "";
-        // request.on('row', function(columns) {
-        //     columns.forEach(function(column) {
-        //       if (column.value === null) {
-        //         console.log('NULL');
-        //       } else {
-        //         arrayIsvTE.push(column.value);
-        //         result+= column.value + " ";
-        //       }
-        //     });
-        //     // console.log(result);
-        //     arrayIsvTE.push(result);
-        //     result ="";
-        // }); 
-        
-        // request.on('done', function(rowCount, more) {
-        // console.log(rowCount + ' rows returned');
-        // });
+       
         
         connection.execSql(request);
     };
