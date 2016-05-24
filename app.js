@@ -163,6 +163,14 @@ dialog.on('Abuse', function (session, args, next) {
         //   session.endDialog("Session Ended");
     });   
 
+//---------------------------------------------------------------------------------------------------    
+//handle the case where intent is abuse
+
+dialog.on('Help', function (session, args, next) { 
+    session.send( "Ask me Who is the TE for Netflix?" ); 
+        //   session.endDialog("Session Ended");
+    });  
+
 //---------------------------------------------------------------------------------------------------
 //handle the Find Technical Evangelist Find_TE intent
 
@@ -176,24 +184,32 @@ var account = builder.EntityRecognizer.findEntity(args.entities, 'Account');
 var searchAccount = "";
 
 //create regex version of the searchAccount
-if (account) {(searchAccount = new RegExp(account.entity, 'i'))};
+if (account) {
+    (searchAccount = new RegExp(account.entity, 'i'))
+} else {
+    session.endDialog("Sorry, I couldn't make out the name of the account.");
+}
 
 // Next line to assist with debugging
 // session.send( "Looking for the TE for " + searchAccount); 
 
 //search mapping array for searchAccount
 var x = 0;
+var found = false;
         // Next line to assist with debugging
         // // console.log("Looking for account");
-while ( x < arrayIsvTE.length) {
+while ( x < arrayIsvTE.length && !found) {
     if (arrayIsvTE[x].match(searchAccount)) {
       //post results to chat
         session.send( "The TE for " + arrayIsvTE[x] + " is " + arrayIsvTE[x+1]); 
-        x = arrayIsvTE.length;
+        found = true;
         };
     x++;
     x++;
     };
+    if (!found) {
+        session.send( "Sorry, I couldn't find the TE for " + account.entity)
+        };
 
     // next line to assist with debug
     //   session.endDialog("Session Ended");
