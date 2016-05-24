@@ -188,13 +188,14 @@ var x = 0;
 // // console.log("Looking for account");
 while ( x < arrayIsvTE.length) {
     // session.send(partnerISV[x][0]); 
-    if (arrayIsvTE[x][0] == searchAccount) {
-//         // console.log(partnerISV[x][0] +" " + partnerISV[x][1]);
+    if (arrayIsvTE[x] == searchAccount) {
+
 //         //post results to chat
         session.send( "The TE for " + searchAccount + " is " + arrayIsvTE[x+1]); 
         x = arrayIsvTE.length;
     };
-    x++;x++;
+    x++;
+    // x++;
     };
 
 
