@@ -1,4 +1,4 @@
-"use strict";
+//"use strict";
 
 // Cloned & branched from my3rdbot
 
