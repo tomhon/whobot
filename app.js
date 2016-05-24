@@ -185,8 +185,10 @@ if (!account) {
         while ( x < arrayIsvTE.length) {
             if (arrayIsvTE[x].match(searchAccount)) {
             //post results to chat
-                session.send( "The TE for " + arrayIsvTE[x] + " is " + arrayIsvTE[x+1]); 
-                found = true;
+                if(arrayIsvTE[x+1]) {
+                    session.send( "The TE for " + arrayIsvTE[x] + " is " + arrayIsvTE[x+1]); 
+                    found = true;
+                    }
                 };
             x++;
             x++;
