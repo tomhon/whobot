@@ -139,10 +139,6 @@ dialog.on('None', function (session, args, next) {
         session.send( "Remote Partner data is live = " + item); 
     });
     session.send( "Remote Partner data is live = " + (arrayIsvTE.length > 0)); 
-    session.send( "Remote Partner data is live = " + arrayIsvTE[0]); 
-    session.send( "Remote Partner data is live = " + arrayIsvTE[1]); 
-    session.send( "Remote Partner data is live = " + arrayIsvTE[2]); 
-    session.send( "Remote Partner data is live = " + arrayIsvTE[3]); 
               // session.endDialog("Session Ended");
     });
 //---------------------------------------------------------------------------------------------------    
@@ -182,8 +178,9 @@ var searchAccount = "";
 //create regex version of the searchAccount
 if (account) {(searchAccount = new RegExp(account.entity, 'i'))};
 
-session.send( "Looking for the TE for " + searchAccount); 
-// session.send( "in partnerISV array length" + partnerISV.length); 
+// Next line to assist with debugging
+// session.send( "Looking for the TE for " + searchAccount); 
+
 var x = 0;
 
 // // console.log("Looking for account");
@@ -203,8 +200,8 @@ while ( x < arrayIsvTE.length) {
 
 
 
-    // console.log(keywords);
-      session.endDialog("Session Ended");
+    // next line to assist with debug
+    //   session.endDialog("Session Ended");
       
      
       
