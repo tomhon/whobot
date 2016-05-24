@@ -18,13 +18,11 @@ var Connection = require('tedious').Connection;
 
 //initialize mapping data array
 
-
-
 //arrayIsvTE is sourced from SQL Server
 var arrayIsvTE = new Array();
 // arrayIsvTE.push("First item on mapping array");
 
-//error array
+//error logging array
 var arrayErr = new Array();
 
 // //partnerISV is locally sourced mapping data for testing
@@ -44,7 +42,7 @@ var arrayErr = new Array();
 // partnerISV[3][1] = 'Yansong Li <yansongl@microsoft.com>';
 
 
-//set up SQL server connection
+//set up SQL server connection using Application Environment Variables
 
     var config = {
             userName: process.env.SQLuserName,
@@ -59,10 +57,10 @@ connection.on('connect', function(err) {
     // If no error, then good to proceed.
     
         if (err) {
-           console.log(err);
+        //    console.log(err);
             arrayErr.push(err);
         } else {
-          console.log("Connected to " + this.config.server + " " + this.config.options.database);
+        //   console.log("Connected to " + this.config.server + " " + this.config.options.database);
           arrayErr.push("Connected to SQL Server " + this.config.server);
           loadMappingArray();    
         };
@@ -93,10 +91,11 @@ connection.on('connect', function(err) {
               if (column.value === null) {
                 console.log('NULL');
               } else {
+                arrayIsvTE.push(column.value);
                 result+= column.value + " ";
               }
             });
-            console.log(result);
+            // console.log(result);
             arrayIsvTE.push(result);
             result ="";
         }); 
@@ -131,7 +130,9 @@ dialog.on('None', function (session, args, next) {
     session.send( "Remote Partner data is live = " + (arrayIsvTE.length > 0)); 
     session.send( "Remote Partner data is live = " + arrayIsvTE[0]); 
     session.send( "Remote Partner data is live = " + arrayIsvTE[1]); 
-          // session.endDialog("Session Ended");
+    session.send( "Remote Partner data is live = " + arrayIsvTE[2]); 
+    session.send( "Remote Partner data is live = " + arrayIsvTE[3]); 
+              // session.endDialog("Session Ended");
     });
 //---------------------------------------------------------------------------------------------------    
 //handle the case where intent is happy
