@@ -230,10 +230,11 @@ if (!account) {
         while ( x < arrayIsvTE.length) {
             if (arrayIsvTE[x].match(searchAccount)) {
             //post results to chat
-                if(arrayIsvTE[x+2]) {
+                if(arrayIsvTE[x+1]) {
                     session.send( "The BE for " + arrayIsvTE[x] + " is " + arrayIsvTE[x+2]); 
                     found = true;
                     }
+                };
             x++;
             x++;
             };
