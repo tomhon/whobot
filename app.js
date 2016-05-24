@@ -188,10 +188,10 @@ var x = 0;
 // // console.log("Looking for account");
 while ( x < arrayIsvTE.length) {
     // session.send(partnerISV[x][0]); 
-    if (arrayIsvTE[x] == searchAccount) {
+    if (arrayIsvTE[x].toUpperCase() == searchAccount.toUpperCase()) {
 
 //         //post results to chat
-        session.send( "The TE for " + searchAccount + " is " + arrayIsvTE[x+1]); 
+        session.send( "The TE for " + arrayIsvTE[x] + " is " + arrayIsvTE[x+1]); 
         x = arrayIsvTE.length;
     };
     x++;
