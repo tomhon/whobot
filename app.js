@@ -73,7 +73,7 @@ connection.on('connect', function(err) {
     
  function loadMappingArray() {
       // request = new Request("SELECT c.CustomerID, c.CompanyName,COUNT(soh.SalesOrderID) AS OrderCount FROM SalesLT.Customer AS c LEFT OUTER JOIN SalesLT.SalesOrderHeader AS soh ON c.CustomerID = soh.CustomerID GROUP BY c.CustomerID, c.CompanyName ORDER BY OrderCount DESC;", function(err) {
-        arrayErr.push("entered loadMappingArray");
+
         // request = new Request("SELECT Title, AssignedTE FROM dbo.PartnerIsvs", function(err) {
         request = new Request("SELECT PartnerName, TEName FROM dbo.partners", function(err) {
         if (err) {
@@ -84,7 +84,7 @@ connection.on('connect', function(err) {
             arrayErr.push("SQL request succeeded");
           }
         });
-        arrayErr.push("set up request");
+
 
         result = "";
         request.on('row', function(columns) {
@@ -128,7 +128,8 @@ dialog.on('None', function (session, args, next) {
         session.send( "Remote Partner data is live = " + item); 
     });
     session.send( "Remote Partner data is live = " + (arrayIsvTE.length > 0)); 
-
+    session.send( "Remote Partner data is live = " + arrayIsvTE[0]); 
+    session.send( "Remote Partner data is live = " + arrayIsvTE[1]); 
           // session.endDialog("Session Ended");
     });
 //---------------------------------------------------------------------------------------------------    
