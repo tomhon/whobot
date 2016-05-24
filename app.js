@@ -181,64 +181,22 @@ if (account) {(searchAccount = new RegExp(account.entity, 'i'))};
 // Next line to assist with debugging
 // session.send( "Looking for the TE for " + searchAccount); 
 
+//search mapping array for searchAccount
 var x = 0;
-
-// // console.log("Looking for account");
+        // Next line to assist with debugging
+        // // console.log("Looking for account");
 while ( x < arrayIsvTE.length) {
-    // session.send(partnerISV[x][0]); 
     if (arrayIsvTE[x].match(searchAccount)) {
-    // if (arrayIsvTE[x].toUpperCase() == searchAccount.toUpperCase()) {
-
-//         //post results to chat
+      //post results to chat
         session.send( "The TE for " + arrayIsvTE[x] + " is " + arrayIsvTE[x+1]); 
         x = arrayIsvTE.length;
-    };
+        };
     x++;
-    // x++;
+    x++;
     };
-
-
-
 
     // next line to assist with debug
     //   session.endDialog("Session Ended");
-      
-     
-      
-      
-// connect to Amazon shopping API using Azure Application Settings
-
-// var client = amazon.createClient({
-//   awsId: process.env.AWSID,
-//   awsSecret: process.env.AWSSECRET,
-//   awsTag: process.env.AWSTAG
-// });
-
-// var results;
-
-//    var searches = client.itemSearch({
-// 		  keywords: keywords,
-// 		  searchIndex: 'All',
-// 		  responseGroup: 'ItemAttributes,Offers,Images'
-// 		}).then(function(searchResults){
-// 		  results = searchResults;
-// //     console.log(results);
-
-// //parse results and build response message 
-//       var attribution = results[0].ItemAttributes[0].Title[0];
-//       var imageLink = results[0].LargeImage[0].URL[0];
-// // console.log[imageLink];
-//     var reply = new builder.Message()
-//                                .setText(session, attribution)
-//                                .addAttachment({ fallbackText: attribution, contentType: 'image/jpeg', contentUrl: imageLink 
-//                                });
-// // return results to client
-//       session.send( "You asked for " + keywords ); 
-//       session.endDialog(reply);
-      
-// 		}).catch(function(err){
-// 		  console.log(err);
-// 		});
       
     });
 //---------------------------------------------------------------------------------------------------
