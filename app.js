@@ -153,6 +153,8 @@ dialog.on('Abuse', function (session, args, next) {
 
 dialog.on('Help', function (session, args, next) { 
     session.send( "Ask me Who is the TE for Netflix?" ); 
+    session.send( "... or Who is the TE for Amazon?" ); 
+    session.send( "... or Who are the TE and BE for Facebook?" ); 
         //   session.endDialog("Session Ended");
     });  
 
