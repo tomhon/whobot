@@ -250,6 +250,57 @@ if (!account) {
         }});
 
 //---------------------------------------------------------------------------------------------------
+//handle the Find Technical and Business Evangelist Find_BE intent
+
+dialog.on('Find_Both', function (session, args, next) { 
+//    console.log(args.entities); 
+
+// use bot builder EntityRecognizer to parse out the LUIS entities
+var account = builder.EntityRecognizer.findEntity(args.entities, 'Account'); 
+
+// assemble the query using identified entities   
+var searchAccount = "";
+
+//create regex version of the searchAccount
+if (!account) {
+        session.send("Sorry, I couldn't make out the name of the account you are looking for.");
+} else { 
+        (searchAccount = new RegExp(account.entity, 'i'))
+
+        // Next line to assist with debugging
+        // session.send( "Looking for the TE for " + searchAccount); 
+
+        //search mapping array for searchAccount
+        var x = 0;
+        var found = false;
+                // Next line to assist with debugging
+                // // console.log("Looking for account");
+        while ( x < arrayIsvTE.length) {
+            if (arrayIsvTE[x].match(searchAccount)) {
+            //post results to chat
+                if(arrayIsvTE[x+1]) {
+                    session.send( "The TE for " + arrayIsvTE[x] + " is " + arrayIsvTE[x+1]); 
+                    found = true;
+                    }
+                if(arrayIsvTE[x+2]) {
+                    session.send( "The BE for " + arrayIsvTE[x] + " is " + arrayIsvTE[x+2]); 
+                    found = true;
+                    }
+                };
+            x++;
+            x++;
+            x++;
+            };
+            if (!found) {
+                session.send( "Sorry, I couldn't find the Evangelists for " + account.entity)
+                };
+
+            // next line to assist with debug
+            //   session.endDialog("Session Ended");
+            
+        }});
+
+//---------------------------------------------------------------------------------------------------
 // Setup Restify Server
 var server = restify.createServer();
 server.get('/', function (req, res) {
