@@ -310,7 +310,7 @@ session.send( "Hey, I'm still learning how to do that. Check back soon!" );
     
     // use bot builder EntityRecognizer to parse out the LUIS entities
 var evangelist = builder.EntityRecognizer.findEntity(args.entities, 'Evangelist'); 
-session.send( "Recognized Evangelist " + evangelist); 
+session.send( "Recognized Evangelist " + evangelist.entity); 
 
 // assemble the query using identified entities   
 var searchEvangelist = "";
