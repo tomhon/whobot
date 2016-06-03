@@ -333,14 +333,14 @@ if (!evangelist) {
             if (arrayIsvTE[x+1].match(searchEvangelist)) {
             //found TE match
                 if(arrayIsvTE[x]) {
-                    session.send( arrayIsvTE[x+1] + " manages " + arrayIsvTE[x]); 
+                    session.send( arrayIsvTE[x+1] + " is TE for " + arrayIsvTE[x]); 
                     found = true;
                     }
                 };
             if (arrayIsvTE[x+2].match(searchEvangelist)) {
             //found BE match
                 if(arrayIsvTE[x]) {
-                    session.send( arrayIsvTE[x+2] + " manages " + arrayIsvTE[x]); 
+                    session.send( arrayIsvTE[x+2] + " is BE for " + arrayIsvTE[x]); 
                     found = true;
                     }
                 };
