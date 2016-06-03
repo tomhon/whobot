@@ -306,7 +306,52 @@ if (!account) {
 //handle the case where intent is List Accounts for BE or TE
 
 dialog.on('Find_Accounts', function (session, args, next) { 
-    session.send( "Hey, I'm still learning how to do that. Check back soon!" ); 
+    // session.send( "Hey, I'm still learning how to do that. Check back soon!" ); 
+    
+    // use bot builder EntityRecognizer to parse out the LUIS entities
+var evangelist = builder.EntityRecognizer.findEntity(args.entities, 'Evangelist'); 
+
+// assemble the query using identified entities   
+var searchEvangelist = "";
+
+//create regex version of the searchEvangelist
+if (!Evangelist) {
+        session.send("Sorry, I couldn't make out the name of the evangelist you are looking for.");
+} else { 
+        (searchEvangelist = new RegExp(account.entity, 'i'))
+
+        // Next line to assist with debugging
+        session.send( "Looking for the accounts for " + searchEvangelist); 
+
+        //search mapping array for searchAccount
+        var x = 0;
+        var found = false;
+                // Next line to assist with debugging
+                // // console.log("Looking for account");
+        while ( x < arrayIsvTE.length) {
+            if (arrayIsvTE[x].match(searchEvangelist)) {
+            //post results to chat
+                if(arrayIsvTE[x+1]) {
+                    session.send( "The TE for " + arrayIsvTE[x] + " is " + arrayIsvTE[x+1]); 
+                    found = true;
+                    }
+                if(arrayIsvTE[x+2]) {
+                    session.send( "The BE for " + arrayIsvTE[x] + " is " + arrayIsvTE[x+2]); 
+                    found = true;
+                    }
+                };
+            x++;
+            x++;
+            x++;
+            };
+            if (!found) {
+                session.send( "Sorry, I couldn't find the accounts for " + evangelist.entity)
+                };
+
+            // next line to assist with debug
+            //   session.endDialog("Session Ended");
+            
+        }
     });   
 
 
