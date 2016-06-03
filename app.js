@@ -302,6 +302,14 @@ if (!account) {
             
         }});
 
+//---------------------------------------------------------------------------------------------------    
+//handle the case where intent is List Accounts for BE or TE
+
+dialog.on('Find_Accounts', function (session, args, next) { 
+    session.send( "Hey, I'm still learning how to do that. Check back soon!" ); 
+    });   
+
+
 //---------------------------------------------------------------------------------------------------
 // Setup Restify Server
 var server = restify.createServer();
