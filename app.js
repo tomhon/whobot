@@ -330,14 +330,17 @@ if (!evangelist) {
                 // Next line to assist with debugging
                 // // console.log("Looking for account");
         while ( x < arrayIsvTE.length) {
-            if (arrayIsvTE[x].match(searchEvangelist)) {
-            //post results to chat
-                if(arrayIsvTE[x-1]) {
-                    session.send( arrayIsvTE[x] + " manages " + arrayIsvTE[x-1]); 
+            if (arrayIsvTE[x+1].match(searchEvangelist)) {
+            //found TE match
+                if(arrayIsvTE[x]) {
+                    session.send( arrayIsvTE[x+1] + " manages " + arrayIsvTE[x]); 
                     found = true;
                     }
-                if(arrayIsvTE[x+2]) {
-                    session.send( "The BE for " + arrayIsvTE[x] + " is " + arrayIsvTE[x+2]); 
+                };
+            if (arrayIsvTE[x+2].match(searchEvangelist)) {
+            //found BE match
+                if(arrayIsvTE[x]) {
+                    session.send( arrayIsvTE[x+2] + " manages " + arrayIsvTE[x]); 
                     found = true;
                     }
                 };
