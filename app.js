@@ -344,9 +344,9 @@ if (!evangelist) {
                     found = true;
                     }
                 };
+            x++
             x++;
-            // x++;
-            // x++;
+            x++;
             };
             if (!found) {
                 session.send( "Sorry, I couldn't find the accounts for " + evangelist.entity)
