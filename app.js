@@ -1,10 +1,7 @@
-//"use strict";
-
-// Cloned & branched from my3rdbot
 
 var restify = require('restify');
 var builder = require('botbuilder');
-// var amazon = require('amazon-product-api');
+
 
 //add appInsights
 // import appInsights = require("applicationinsights");
@@ -24,23 +21,6 @@ var arrayIsvTE = new Array();
 
 //error logging array
 var arrayErr = new Array();
-
-// //partnerISV is locally sourced mapping data for testing
-// var partnerISV = new Array(5);
-
-// partnerISV[0]= new Array(2);
-// partnerISV[0][0] = 'Snapchat'.toLowerCase();
-// partnerISV[0][1] = 'James Cadd <jacadd@microsoft.com>';
-// partnerISV[1]= new Array(2);
-// partnerISV[1][0] = 'Twitter'.toLowerCase();
-// partnerISV[1][1] = 'Chris Barker <cbarker@microsoft.com>';
-// partnerISV[2]= new Array(2);
-// partnerISV[2][0] = 'Yahoo'.toLowerCase();
-// partnerISV[2][1] = 'Maarten van de Bospoort <maartenb@microsoft.com>';
-// partnerISV[3]= new Array(2);
-// partnerISV[3][0] = 'baidu'.toLowerCase();
-// partnerISV[3][1] = 'Yansong Li <yansongl@microsoft.com>';
-
 
 //set up SQL server connection using Application Environment Variables
 
