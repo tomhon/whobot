@@ -306,7 +306,7 @@ if (!account) {
 //handle the case where intent is List Accounts for BE or TE
 
 dialog.on('Find_Accounts', function (session, args, next) { 
-session.send( "Hey, I'm still learning how to do that. Check back soon!" ); 
+// session.send( "Hey, I'm still learning how to do that. Check back soon!" ); 
     
     // use bot builder EntityRecognizer to parse out the LUIS entities
 var evangelist = builder.EntityRecognizer.findEntity(args.entities, 'Evangelist'); 
@@ -322,7 +322,7 @@ if (!evangelist) {
         (searchEvangelist = new RegExp(evangelist.entity, 'i'))
 
         // Next line to assist with debugging
-        session.send( "Looking for the accounts for " + searchEvangelist); 
+        // session.send( "Looking for the accounts for " + searchEvangelist); 
 
         //search mapping array for searchAccount
         var x = 0;
