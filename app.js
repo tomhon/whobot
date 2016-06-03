@@ -310,7 +310,7 @@ session.send( "Hey, I'm still learning how to do that. Check back soon!" );
     
     // use bot builder EntityRecognizer to parse out the LUIS entities
 var evangelist = builder.EntityRecognizer.findEntity(args.entities, 'Evangelist'); 
-session.send( "Recognized Evangelist " + evangelist.entity); 
+// session.send( "Recognized Evangelist " + evangelist.entity); 
 
 // assemble the query using identified entities   
 var searchEvangelist = "";
@@ -332,8 +332,8 @@ if (!evangelist) {
         while ( x < arrayIsvTE.length) {
             if (arrayIsvTE[x].match(searchEvangelist)) {
             //post results to chat
-                if(arrayIsvTE[x+1]) {
-                    session.send( "The TE for " + arrayIsvTE[x] + " is " + arrayIsvTE[x+1]); 
+                if(arrayIsvTE[x-1]) {
+                    session.send( arrayIsvTE[x] + " manages " + arrayIsvTE[x-1]); 
                     found = true;
                     }
                 if(arrayIsvTE[x+2]) {
@@ -342,8 +342,8 @@ if (!evangelist) {
                     }
                 };
             x++;
-            x++;
-            x++;
+            // x++;
+            // x++;
             };
             if (!found) {
                 session.send( "Sorry, I couldn't find the accounts for " + evangelist.entity)
