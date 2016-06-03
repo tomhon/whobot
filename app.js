@@ -316,7 +316,7 @@ session.send( "Recognized Evangelist " + evangelist.entity);
 var searchEvangelist = "";
 
 //create regex version of the searchEvangelist
-if (!Evangelist) {
+if (!evangelist) {
         session.send("Sorry, I couldn't make out the name of the evangelist you are looking for.");
 } else { 
         (searchEvangelist = new RegExp(evangelist.entity, 'i'))
