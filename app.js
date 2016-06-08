@@ -127,12 +127,13 @@ dialog.on('Abuse', function (session, args, next) {
     });   
 
 //---------------------------------------------------------------------------------------------------    
-//handle the case where intent is abuse
+//handle the case where intent is help
 
 dialog.on('Help', function (session, args, next) { 
     session.send( "Ask me Who is the TE for Netflix?" ); 
     session.send( "... or Who is the TE for Amazon?" ); 
     session.send( "... or Who are the TE and BE for Facebook?" ); 
+    session.send( "... or Which accounts does Ian manage?" ); 
         //   session.endDialog("Session Ended");
     });  
 
